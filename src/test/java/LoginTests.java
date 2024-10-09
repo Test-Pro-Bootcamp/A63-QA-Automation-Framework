@@ -17,9 +17,17 @@ public class LoginTests extends BaseTest {
         WebDriver driver = new ChromeDriver(options);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
-        String url = "https://qa.koel.app/";
+        //String url = "https://qa.koel.app/";
         driver.get(url);
         Assert.assertEquals(driver.getCurrentUrl(), url);
         driver.quit();
+    }
+    @Test(dataProvider = "IncorrectLoginData", dataProviderClass = BaseTest.class)
+    public void loginInvalidEmailPassword(String email, String password) throws InterruptedException {
+        provideEmail(email);
+        providePassword(password);
+        clickLoginButton();
+        Thread.sleep(2000);
+        Assert.assertEquals(driver.getCurrentUrl(), url);
     }
 }

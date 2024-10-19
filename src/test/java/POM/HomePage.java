@@ -1,26 +1,34 @@
 package POM;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 
 public class HomePage extends BasePage{
-    public HomePage(WebDriver giveDriver){
-        super(giveDriver);
+
+    public HomePage(WebDriver givenDriver){
+        super(givenDriver);
     }
-    By playlistElement = By.xpath("//*[@id=\"playlists\"]/ul/li[3]/a");
-    By playListInputField = By.cssSelector("[name='name']");
-    By notification = By.xpath("//div[@class=\"success show\"]");
-    public void doubleClickPlaylist(){
-        actions.doubleClick(findElement(playlistElement)).perform();
+
+    @FindBy(xpath = "//*[@id=\"playlists\"]/ul/li[3]/a")
+    WebElement playlistElement;
+    @FindBy(css = "[name='name']")
+    WebElement playListInputField;
+    @FindBy(xpath = "//div[@class=\"success show\"]")
+    WebElement notification;
+
+    public HomePage doubleClickPlaylist(){
+        actions.doubleClick(playlistElement).perform();
+        return this;
     }
-    public void renameExistingPlaylist(){
-        findElement(playListInputField).sendKeys(Keys.chord(Keys.CONTROL,"A",Keys.BACK_SPACE));
-        findElement(playListInputField).sendKeys("RenamedPlaylistNew" + Keys.ENTER);
+    public void renameExistingPlaylist() throws InterruptedException{
+        playListInputField.sendKeys(Keys.chord(Keys.CONTROL,"A",Keys.BACK_SPACE));
+        playListInputField.sendKeys("RenamedPlaylistNew" + Keys.ENTER);
+        Thread.sleep(2000);
     }
     public String renamedPlaylistMsg(){
-        return findElement(notification).getText();
+        return notification.getText();
     }
 
 }

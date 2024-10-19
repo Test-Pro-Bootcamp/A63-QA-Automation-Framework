@@ -13,10 +13,7 @@ public class LoginTests extends BaseTest {
     @Test
     public void loginValidEmailPassword() throws InterruptedException {
         LoginPage loginPage = new LoginPage(driver);
-        HomePage homePage = new HomePage(driver);
-        loginPage.provideEmail("dhivya.sankaran@testpro.io");
-        loginPage.providePassword("v5eUH9H2");
-        loginPage.clickLoginBtn();
+        loginPage.provideEmail("dhivya.sankaran@testpro.io").providePassword("v5eUH9H2").clickLoginBtn();
 
 
     }

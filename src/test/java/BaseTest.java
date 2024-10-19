@@ -28,15 +28,16 @@ public class BaseTest {
     static void setupClass() {
         WebDriverManager.chromedriver().setup();
     }
+
     @BeforeMethod
     @Parameters({"BaseURL"})
-    public void launchClass(String BaseURL){
+    public void launchClass(String BaseURL) {
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--remote-allow-origins=*");
-        Map<String, Object> prefs=new HashMap<String,Object>();
+        Map<String, Object> prefs = new HashMap<String, Object>();
         prefs.put("profile.default_content_setting_values.notifications", 1);
         //1-Allow, 2-Block, 0-default
-        options.setExperimentalOption("prefs",prefs);
+        options.setExperimentalOption("prefs", prefs);
         driver = new ChromeDriver(options);
 
         driver.manage().window().maximize();
@@ -51,23 +52,8 @@ public class BaseTest {
     public void closeBrowser(){
         driver.quit();
     }
+
     public void navigateToPage(){
         driver.get(url);
     }
-    /*
-    public void provideEmail(String email){
-        WebElement emailField = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("input[type ='email']")));
-        emailField.clear();
-        emailField.sendKeys(email);
-    }
-    public void providePassword(String password){
-        WebElement passwordField = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("input[type ='password']")));
-        passwordField.clear();
-        passwordField.sendKeys(password);
-
-    }
-    public void clickLoginBtn(){
-        WebElement loginBtn = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("Button[type='submit']")));
-        loginBtn.click();
-    }*/
 }

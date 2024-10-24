@@ -3,7 +3,7 @@ import POM.LoginPage;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class Homework23 extends BaseTest {
+public class Homework24 extends BaseTest {
 
     @Test
     public void renamePlaylist() throws InterruptedException{

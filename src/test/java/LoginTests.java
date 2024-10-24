@@ -1,3 +1,5 @@
+import POM.POM.HomePage;
+import POM.POM.LoginPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -8,18 +10,25 @@ import java.time.Duration;
 
 public class LoginTests extends BaseTest {
     @Test
-    public void loginEmptyEmailPassword() {
+    public void loginValidEmailPassword() {
+        LoginPage loginPage = new LoginPage(driver);
+        HomePage homepage = new HomePage(driver);
 
-//      Added ChromeOptions argument below to fix websocket error
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("--remote-allow-origins=*");
+        loginPage.provideEmail("victoria.mereneanu@testpro.io");
+        loginPage.providePassword("Testpro1234$");
+        loginPage.clickSubmit();
+        Assert.assertTrue(homepage.getUserAvatar());
+    }
 
-        WebDriver driver = new ChromeDriver(options);
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+    @Test
+    public void playSong() {
+        LoginPage loginPage = new LoginPage(driver);
+        HomePage homePage = new HomePage(driver);
 
-        String url = "https://qa.koel.app/";
-        driver.get(url);
-        Assert.assertEquals(driver.getCurrentUrl(), url);
-        driver.quit();
+        loginPage.provideEmail("victoria.mereneanu@testpro.io");
+        loginPage.providePassword("Testpro1234$");
+        loginPage.clickSubmit();
+        homePage.play();
+        Assert.assertTrue(homePage.isSongPlaying());
     }
 }

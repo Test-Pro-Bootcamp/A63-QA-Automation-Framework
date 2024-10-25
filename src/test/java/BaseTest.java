@@ -93,7 +93,7 @@ public class BaseTest {
                 caps.setCapability("browserName", "chrome");
                 return driver = new RemoteWebDriver(URI.create(gridURL).toURL(), caps);
             default:
-                WebDriverManager.chromiumdriver().setup();
+                WebDriverManager.chromedriver().setup();
                 ChromeOptions chromeOptions = new ChromeOptions();
                 chromeOptions.addArguments("--remote-allow-origins=*");
                 return driver = new ChromeDriver(chromeOptions);

@@ -9,12 +9,20 @@ import org.testng.annotations.Test;
 import java.time.Duration;
 
 public class LoginTests extends BaseTest {
-
+    String url = "https://qa.koel.app/";
     @Test
     public void loginValidEmailPassword() throws InterruptedException {
-        LoginPage loginPage = new LoginPage(driver);
+        LoginPage loginPage = new LoginPage(getDriver());
+        HomePage homePage = new HomePage(getDriver());
         loginPage.provideEmail("dhivya.sankaran@testpro.io").providePassword("v5eUH9H2").clickLoginBtn();
+        Assert.assertEquals(getDriver().getCurrentUrl(), url);
 
+    }
+    @Test
+    public void loginEmptyEmailPassword() throws InterruptedException{
+        LoginPage loginPage = new LoginPage(getDriver());
+        loginPage.provideEmail("").providePassword("v5eUH9H2").clickLoginBtn();
+        Assert.assertEquals(getDriver().getCurrentUrl(), url);
 
     }
 }

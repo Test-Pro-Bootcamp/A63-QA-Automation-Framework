@@ -18,7 +18,9 @@ import org.testng.annotations.*;
 
 import java.net.MalformedURLException;
 import java.net.URI;
+import java.net.URL;
 import java.time.Duration;
+import java.util.HashMap;
 import java.util.UUID;
 
 import static org.openqa.selenium.By.cssSelector;
@@ -92,6 +94,9 @@ public class BaseTest {
             case "grid-chrome":
                 caps.setCapability("browserName", "chrome");
                 return driver = new RemoteWebDriver(URI.create(gridURL).toURL(), caps);
+
+            case "cloud":
+                return lambdaTest();
             default:
                 WebDriverManager.chromedriver().setup();
                 ChromeOptions chromeOptions = new ChromeOptions();
@@ -108,6 +113,26 @@ public class BaseTest {
 
         driver.quit();
     }
+
+    public static WebDriver lambdaTest() throws MalformedURLException {
+        String hubURL = "https://hub.lambdatest.com/wd/hub";
+
+        ChromeOptions browserOptions = new ChromeOptions();
+        //DesiredCapabilities capabilities = new DesiredCapabilities();
+        //capabilities.setCapability("browserName", "chrome");
+        //capabilities.setCapability("browserVersion", "beta");
+        browserOptions.setPlatformName("Windows 10");
+        browserOptions.setBrowserVersion("beta");
+        HashMap<String, Object> ltOptions = new HashMap<String, Object>();
+        ltOptions.put("username", "nkalinina73");
+        ltOptions.put("accessKey", "hQRiyeCpetOiYPfx6BgelF2Xg9OWv4cBZm1mdksfOLBcRmrJBV");
+        ltOptions.put("build", "Selenium 4");
+        ltOptions.put("selenium_version", "4.0.0");
+        ltOptions.put("w3c", true);
+        browserOptions.setCapability("LT:Options", ltOptions);
+
+        return new RemoteWebDriver(new URL(hubURL), browserOptions);
+    } // this lambdaTest() method returns an instanceof WebDriver for remote testing using the LambdaTest service
 
     public void navigateToPage() {
         driver.get(url);

@@ -118,7 +118,16 @@ public class BaseTest {
         String hubURL = "https://hub.lambdatest.com/wd/hub";
 
         ChromeOptions browserOptions = new ChromeOptions();
-        //DesiredCapabilities capabilities = new DesiredCapabilities();
+        browserOptions.setPlatformName("Windows 10");
+        browserOptions.setBrowserVersion("beta");
+        HashMap<String, Object> ltOptions = new HashMap<String, Object>();
+        ltOptions.put("username", "nkalinina73");
+        ltOptions.put("accessKey", "hQRiyeCpetOiYPfx6BgelF2Xg9OWv4cBZm1mdksfOLBcRmrJBV");
+        ltOptions.put("project", "Untitled");
+        ltOptions.put("w3c", true);
+        ltOptions.put("plugin", "java-java");
+        browserOptions.setCapability("LT:Options", ltOptions);
+     /*   //DesiredCapabilities capabilities = new DesiredCapabilities();
         //capabilities.setCapability("browserName", "chrome");
         //capabilities.setCapability("browserVersion", "beta");
         browserOptions.setPlatformName("Windows 10");
@@ -126,10 +135,9 @@ public class BaseTest {
         HashMap<String, Object> ltOptions = new HashMap<String, Object>();
         ltOptions.put("username", "nkalinina73");
         ltOptions.put("accessKey", "hQRiyeCpetOiYPfx6BgelF2Xg9OWv4cBZm1mdksfOLBcRmrJBV");
-        ltOptions.put("build", "Selenium 4");
-        ltOptions.put("selenium_version", "4.0.0");
+        ltOptions.put("project", "Test Project");
         ltOptions.put("w3c", true);
-        browserOptions.setCapability("LT:Options", ltOptions);
+        browserOptions.setCapability("LT:Options", ltOptions);*/
 
         return new RemoteWebDriver(new URL(hubURL), browserOptions);
     } // this lambdaTest() method returns an instanceof WebDriver for remote testing using the LambdaTest service

@@ -17,6 +17,6 @@ public class HomePage extends BasePage{
         return this;
     }
     public boolean isAvatarDisplayed(){
-        return findElement(avatarIcon).isDisplayed();
+        return avatarIcon.isDisplayed();
     }
 }

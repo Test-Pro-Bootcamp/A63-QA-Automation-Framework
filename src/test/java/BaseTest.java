@@ -22,7 +22,7 @@ import java.time.Duration;
 
 public class BaseTest {
     public static WebDriver driver = null;
-    public static String url = null;
+    public static String url;
     public static WebDriverWait wait = null;
     public static Actions actions = null;
 

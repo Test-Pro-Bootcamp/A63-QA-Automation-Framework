@@ -4,7 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class LoginPage {
+public class LoginPage extends BasePage{
     @FindBy(css = "[type='email']")
     WebElement emailField;
     @FindBy(css = "[type='password']")
@@ -13,7 +13,7 @@ public class LoginPage {
     WebElement submitBtn;
 
     public LoginPage(WebDriver givendriver) {
-        super ();
+        super (givendriver);
     }
     public LoginPage provideEmail(String email){
         emailField.sendKeys(email);

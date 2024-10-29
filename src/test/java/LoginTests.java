@@ -9,7 +9,7 @@ public class LoginTests extends BaseTest {
     LoginPage loginPage = new LoginPage(driver);
     HomePage homePage = new HomePage(driver);
 
-    loginPage.provideEmail("victoriamereneanu@testpro.io")
+    loginPage.provideEmail("victoria.mereneanu@testpro.io")
             .providePassword("Testpro1234$")
             .clickSubmit();
     Assert.assertTrue(homePage.isAvatarDisplayed());

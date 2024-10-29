@@ -18,18 +18,17 @@ public class BasePage {
         driver = givenDriver;
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         PageFactory.initElements(driver, this);
-    }
-    public WebElement findElement(WebElement webElement) {
-        return wait.until(ExpectedConditions.visibilityOfElementLocated((By) webElement));
+
+
     }
     public void click(WebElement webElement){
-        findElement(webElement).click();
+        webElement.click();
     }
     public void doubleClick(WebElement webElement) {
-        actions.doubleClick(findElement(webElement)).perform();
+      actions.doubleClick(webElement).perform();
     }
     public void contextClick(WebElement webElement) {
-        actions.contextClick(findElement(webElement)).perform();
+        actions.contextClick(webElement).perform();
     }
 
 }

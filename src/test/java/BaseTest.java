@@ -22,7 +22,7 @@ import java.time.Duration;
 
 public class BaseTest {
     public static WebDriver driver = null;
-    public static String url;
+    public static String url = null;
     public static WebDriverWait wait = null;
     public static Actions actions = null;
 
@@ -32,15 +32,15 @@ public class BaseTest {
     }
 
     @BeforeMethod
-    @Parameters({"BaseURL"})
-    public void launchBrowser(String BaseURL)  throws MalformedURLException {
+    @Parameters({"BaseUrl"})
+    public void launchBrowser(String BaseUrl)  throws MalformedURLException {
         driver = pickBrowser(System.getProperty("browser"));
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         driver.manage().window().maximize();
 
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         actions = new Actions(driver);
-        url = BaseURL;
+        url = BaseUrl;
         navigateToPage();
     }
     @AfterMethod

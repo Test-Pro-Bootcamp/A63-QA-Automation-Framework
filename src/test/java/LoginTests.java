@@ -13,6 +13,19 @@ public class LoginTests extends BaseTest {
              .providePassword("Testpro1234$")
              .clickSubmit();
      Assert.assertTrue(homePage.isAvatarDisplayed());
-
  }
+@Test
+    public void createNewPlaylistname(){
+    LoginPage loginPage = new LoginPage(driver);
+    HomePage homePage = new HomePage(driver);
+    loginPage.provideEmail("victoria.mereneanu@testpro.io")
+            .providePassword("Testpro1234$")
+            .clickSubmit();
+    homePage.chooseNewPlaylist().choosePlaylistType().addNewName("Vicka2024");
+    Assert.assertTrue(homePage.isPlaylistCreated());
+
+
+
+
+}
 }

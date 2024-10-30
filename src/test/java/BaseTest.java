@@ -30,22 +30,28 @@ public class BaseTest {
     static void setupClass() {
         WebDriverManager.chromedriver().setup();
     }
-
+     private static final ThreadLocal<WebDriver> threadDriver = new ThreadLocal<>();
     @BeforeMethod
     @Parameters({"BaseUrl"})
+
     public void launchBrowser(String BaseUrl)  throws MalformedURLException {
-        driver = pickBrowser(System.getProperty("browser"));
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-        driver.manage().window().maximize();
+        threadDriver.set(pickBrowser(System.getProperty("browser"))); // Fixed missing parentheses
+        getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        getDriver().manage().window().maximize();
 
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         actions = new Actions(driver);
         url = BaseUrl;
         navigateToPage();
     }
+    public void navigateToPage() {getDriver().get(url);}
     @AfterMethod
-    public void navigateToPage() {driver.get(url);}
-    public void closeBrowser() {driver.quit();}
+
+
+    public void closeBrowser() {getDriver().quit();}
+    public static WebDriver getDriver(){
+        return threadDriver.get();
+    }
     public static WebDriver pickBrowser(String browser) throws MalformedURLException{
         DesiredCapabilities caps = new DesiredCapabilities();
         String gridURL = "http://10.0.0.213:4444";

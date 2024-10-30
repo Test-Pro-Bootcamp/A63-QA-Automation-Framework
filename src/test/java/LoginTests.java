@@ -12,6 +12,7 @@ public class LoginTests extends BaseTest {
     String url = "https://qa.koel.app/";
     @Test
     public void loginValidEmailPassword() throws InterruptedException {
+        //Testing Jenkins
         LoginPage loginPage = new LoginPage(getDriver());
         HomePage homePage = new HomePage(getDriver());
         loginPage.provideEmail("dhivya.sankaran@testpro.io").providePassword("v5eUH9H2").clickLoginBtn();

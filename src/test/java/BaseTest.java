@@ -1,19 +1,27 @@
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Parameters;
 
 import java.time.Duration;
+import java.util.List;
+import java.util.concurrent.atomic.AtomicReference;
 
 public class BaseTest {
     public WebDriver driver = null;
     public String url = null;
-    //public String BaseURL;
+    public WebDriverWait wait = null;
+    public Actions actions = null;
+    public String newPlaylistName = "Sample Edited Playlist";
 
     @BeforeSuite
     static void setupClass() {
@@ -26,10 +34,12 @@ public class BaseTest {
         //added chromeOptions arguments below to fix websocket error
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--remote-allow-origins=*");
-        WebDriver driver = new ChromeDriver(options);
+        driver = new ChromeDriver(options);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         driver.manage().window().maximize();
-        url = "https://qa.koel.app/";
+        wait = new WebDriverWait(driver , Duration.ofSeconds(10));
+        actions = new Actions(driver);
+        url = BaseURL;
         navigateToPage();
     }
 
@@ -54,21 +64,28 @@ public class BaseTest {
         submit.click();
     }
 
-    public void openPlayList() {
-        WebElement emptyPlaylist = driver.findElement(By.cssSelector(".playlist:nth-child(3)"));
-        emptyPlaylist.click();
+    public void doubleClickPlaylist() {
+        WebElement playlistElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".playlist:nth-child(7)")));
+        actions.doubleClick(playlistElement).perform();
     }
 
-    public void clickDeletePlaylistBtn() throws InterruptedException {
-        WebElement deletePlaylist = driver.findElement(By.cssSelector(".btn-delete-playlist"));
-        deletePlaylist.clear();
-        Thread.sleep(2000);
+    public void enterNewPlaylistName() {
+        WebElement playlistInputField = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("[name='name']")));
+        //clear() does not work, element has an attribute of "required"
+        // workaround is ctrl A (to select all) then backspace to clear then replace with new playlist name
+        playlistInputField.sendKeys(Keys.chord(Keys.CONTROL,"A", Keys.BACK_SPACE));
+        playlistInputField.sendKeys(newPlaylistName);
+        playlistInputField.sendKeys(Keys.ENTER);
     }
 
-    public String getDeletedPlaylistMsg() {
-        WebElement notificationMsg = driver.findElement(By.cssSelector("div.success.show"));
-        return notificationMsg.getText();
+    public String getRenamePlaylistSuccessMsg() {
+        WebElement notification = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div.success.show")));
+        return notification.getText();
     }
+
+
+
+
 
 }
 

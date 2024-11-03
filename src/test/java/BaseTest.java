@@ -26,10 +26,10 @@ public class BaseTest {
         //added chromeOptions arguments below to fix websocket error
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--remote-allow-origins=*");
-        WebDriver driver = new ChromeDriver(options);
+        driver = new ChromeDriver(options);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         driver.manage().window().maximize();
-        url = "https://qa.koel.app/";
+        url = BaseURL;
         navigateToPage();
     }
 
@@ -55,15 +55,23 @@ public class BaseTest {
     }
 
     public void openPlayList() {
-        WebElement emptyPlaylist = driver.findElement(By.cssSelector(".playlist:nth-child(3)"));
+        WebElement emptyPlaylist = driver.findElement(By.cssSelector(".playlist:nth-child(8)"));
         emptyPlaylist.click();
     }
 
     public void clickDeletePlaylistBtn() throws InterruptedException {
         WebElement deletePlaylist = driver.findElement(By.cssSelector(".btn-delete-playlist"));
-        deletePlaylist.clear();
+        deletePlaylist.click();
         Thread.sleep(2000);
     }
+
+    public void clickOktBtn() throws InterruptedException {
+        WebElement okBtn = driver.findElement(By.cssSelector("button[class='ok']"));
+        okBtn.click();
+        Thread.sleep(2000);
+    }
+
+
 
     public String getDeletedPlaylistMsg() {
         WebElement notificationMsg = driver.findElement(By.cssSelector("div.success.show"));

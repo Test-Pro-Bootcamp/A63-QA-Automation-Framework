@@ -1,7 +1,7 @@
 import org.testng.annotations.Test;
 import org.testng.Assert;
 
-public class Homework19 extends BaseTest {
+public class Homework20 extends BaseTest {
 
    @Test
    public void deletePlaylist() throws InterruptedException {
@@ -11,6 +11,7 @@ public class Homework19 extends BaseTest {
         clickSubmit();
         openPlayList();
         clickDeletePlaylistBtn();
+        clickOktBtn();
         Assert.assertEquals(getDeletedPlaylistMsg(), ExpectedPlaylistDeletedMsg);
    }
 }

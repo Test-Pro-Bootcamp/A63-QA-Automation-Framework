@@ -71,12 +71,12 @@ public class BaseTest {
         String hubURL = "https://hub.lambdatest.com/wd/hub";
         ChromeOptions browserOptions = new ChromeOptions();
         browserOptions.setPlatformName("Windows 10");
-        browserOptions.setBrowserVersion("129");
+        browserOptions.setBrowserVersion("130");
         HashMap<String, Object> ltOptions = new HashMap<String, Object>();
         ltOptions.put("username", "bohdan.ivasiv");
         ltOptions.put("accessKey", "be42V3LHmapc1g6AP6XiScZRg0mKZPXlOTq2QqGawbo0k67wDn");
-        ltOptions.put("build", "TestPro Homework25");
         ltOptions.put("project", "Untitled");
+        ltOptions.put("name", "Test Pro Homework-28");
         ltOptions.put("selenium_version", "4.0.0");
         ltOptions.put("w3c", true);
         browserOptions.setCapability("LT:Options", ltOptions);

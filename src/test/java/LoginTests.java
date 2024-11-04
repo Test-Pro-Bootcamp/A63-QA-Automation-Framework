@@ -21,4 +21,21 @@ public class LoginTests extends BaseTest {
         Assert.assertEquals(getDriver().getCurrentUrl(), url);
 
     }
+    @Test
+    public void loginEmptyEmailPassword() {
+        String url = "https://qa.koel.app/";
+        LoginPage loginPage = new LoginPage(getDriver());
+        loginPage.provideEmail("").providePassword("TkSDMvReT57X$ym").submitBtn();
+        Assert.assertEquals(getDriver().getCurrentUrl(), url);
+
+    }
+    @Test
+    public void loginEmailEmptyPassword() {
+        String url = "https://qa.koel.app/";
+        LoginPage loginPage = new LoginPage(getDriver());
+        loginPage.provideEmail("bohdan.ivasiv@testpro.io").providePassword("").submitBtn();
+        Assert.assertEquals(getDriver().getCurrentUrl(), url);
+
+    }
+
 }

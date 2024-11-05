@@ -5,4 +5,4 @@ Feature: Login feature
     When I enter email "natalia.kalinina@testpro.io"
     And I enter password "nkKoel24$"
     Then I submit
-
+    Then I am logged in

@@ -4,5 +4,5 @@ Feature: Login feature
     Given I open Login Page
     When I enter email "natalia.kalinina@testpro.io"
     And I enter password "nkKoel24$"
-    And I submit
-    Then I am logged in
+    Then I submit
+

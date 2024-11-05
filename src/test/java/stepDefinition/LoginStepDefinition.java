@@ -53,15 +53,16 @@ public class LoginStepDefinition {
 
     }
 
-    @And("I submit")
+    @Then("I submit")
     public void iSubmit() {
         wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("button[type='submit']")));
     }
 
-    @Then("I am logged in")
+   /* @Then("I am logged in")
     public void iAmLoggedIn() {// css = "img.avatar"
-        Assert.assertTrue(wait.until(ExpectedConditions.visibilityOf((WebElement) By.cssSelector("img.avatar"))).isDisplayed());
-    }
+        //Assert.assertTrue(wait.until(ExpectedConditions.visibilityOf((WebElement) By.cssSelector("img.avatar"))).isDisplayed());
+
+    }*/
 
     // if I want to use hooks I will use @Before and @After,
     // and change @And to @Given

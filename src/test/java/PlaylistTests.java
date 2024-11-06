@@ -4,6 +4,7 @@ import pagefactory.HomePage;
 import pagefactory.LoginPage;
 import pagefactory.PlaylistPage;
 
+
 public class PlaylistTests extends BaseTest {
     @Test
     public void createPlaylist(){
@@ -28,5 +29,6 @@ public class PlaylistTests extends BaseTest {
         Assert.assertEquals(homePage.getDeletePlaylistMsg(), expectedDeleteMsg);
 
     }
+
 
 }

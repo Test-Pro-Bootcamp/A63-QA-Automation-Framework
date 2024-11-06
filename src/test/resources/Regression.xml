@@ -12,6 +12,18 @@
                     <include name="loginEmailEmptyPassword"> </include>
                 </methods>
             </class>
+            <class name="PlaylistTests">
+                <methods>
+                    <include name="createPlaylist"> </include>
+                    <include name="deletePlaylist"> </include>
+                </methods>
+            </class>
+            <class name="SongTests">
+                <methods>
+                    <include name="addSongToPlaylist"> </include>
+                    <include name="playSong"> </include>
+                </methods>
+            </class>
         </classes>
     </test>
 </suite>

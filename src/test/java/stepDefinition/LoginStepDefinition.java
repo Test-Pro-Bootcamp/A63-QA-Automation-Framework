@@ -55,12 +55,13 @@ public class LoginStepDefinition {
 
     @And("I submit")
     public void iSubmit() {
-        wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("button[type='submit']")));
+        wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("button[type='submit']"))).click();
     }
 
     @Then("I am logged in")
     public void iAmLoggedIn() {// css = "img.avatar"
-        Assert.assertTrue(wait.until(ExpectedConditions.visibilityOf((WebElement) By.cssSelector("img.avatar"))).isDisplayed());
+        WebElement avatar = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("img.avatar")));
+        Assert.assertTrue(avatar.isDisplayed());
 
     }
 

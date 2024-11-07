@@ -1,4 +1,3 @@
-import org.openqa.selenium.WebDriver;
 import org.testng.annotations.Test;
 import pagefactory.HomePage;
 import pagefactory.LoginPage;

@@ -1,6 +1,6 @@
 import org.testng.annotations.Test;
 
-public class Homework17 extends BaseTest{
+public class AddSongToPlayList extends BaseTest{
 
     @Test
     public void searchAndAddSongToPlaylist() {

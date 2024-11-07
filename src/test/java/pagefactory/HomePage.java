@@ -1,9 +1,10 @@
 package pagefactory;
+import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 
 public class HomePage extends BasePage {
@@ -17,7 +18,7 @@ public class HomePage extends BasePage {
     WebElement newNameForPlaylist;
     @FindBy(css = "div.success.show")
     WebElement createdPlaylistMsg;
-    @FindBy (xpath = "//section[@id = 'playlists'] //a[contains(text(), 'Playlist23')][1]")
+    @FindBy (xpath = "//section[@id = 'playlists'] //a[contains(text(), 'Playlist1')]")
     WebElement playlistName;
     @FindBy(css = "div.success.show")
     WebElement deleteMsg;
@@ -50,13 +51,15 @@ public class HomePage extends BasePage {
         return this;
     }
     public String getCreatedPlaylistMsg(){
-        return createdPlaylistMsg.getText();
+         wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div.success.show")));
+         return createdPlaylistMsg.getText();
     }
     public HomePage findPlaylist(){
         playlistName.click();
         return this;
     }
     public String getDeletePlaylistMsg(){
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div.success.show")));
         return deleteMsg.getText();
     }
     public HomePage searchSong(String songName){

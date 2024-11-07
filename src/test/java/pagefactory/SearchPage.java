@@ -1,8 +1,10 @@
 package pagefactory;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class SearchPage extends BasePage {
     @FindBy(css = "button[data-test='view-all-songs-btn']")
@@ -33,6 +35,7 @@ public class SearchPage extends BasePage {
         return this;
     }
     public String getAddToPlaylistSuccessMsg(){
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div.success.show")));
         return notification.getText();
     }
 }

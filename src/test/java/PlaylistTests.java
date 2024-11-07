@@ -19,7 +19,7 @@ public class PlaylistTests extends BaseTest {
     }
     @Test
     public void deletePlaylist(){
-        String expectedDeleteMsg = "Deleted playlist \"Playlist23.\"";
+        String expectedDeleteMsg = "Deleted playlist \"Playlist1.\"";
         LoginPage loginPage = new LoginPage(getDriver());
         HomePage homePage = new HomePage(getDriver());
         PlaylistPage playlistPage = new PlaylistPage(getDriver());

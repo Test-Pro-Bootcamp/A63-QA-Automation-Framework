@@ -17,10 +17,10 @@ import java.time.Duration;
 import java.util.List;
 
 public class BaseTest {
-    public WebDriver driver = null;
-    public String url = null;
-    public WebDriverWait wait = null;
-    public Actions actions = null;
+    public static WebDriver driver = null;
+    public static String url = null;
+    public static WebDriverWait wait = null;
+    public static Actions actions = null;
     public String newPlaylistName = "Sample Edited Playlist";
 
 
@@ -49,6 +49,7 @@ public class BaseTest {
     public void closeBrowser(){
         driver.quit();
     }
+
     public void navigateToPage(){
         driver.get(url);
     }

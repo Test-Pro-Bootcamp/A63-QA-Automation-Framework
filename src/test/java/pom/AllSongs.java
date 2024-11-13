@@ -15,10 +15,9 @@ public class AllSongs extends BasePage {
 
     public void chooseAllSongList() { findElement(allSongsBtn).click(); }
 
-    public void contextClickFirstSong() { actions.contextClick(findElement(firstSongElement)).perform(); }
+    public void contextClickFirstSong() { contextClick(firstSongElement); }
 
-
-    public void choosePlayOption() { findElement(choosePlaySongBtn).click(); }
+    public void choosePlayOption() { click(choosePlaySongBtn); }
 
     public boolean isSongPlaying() { return findElement(soundBarVisualizer).isDisplayed(); }
 

@@ -31,13 +31,15 @@ public class HomePage extends BasePage {
     @FindBy(css = "span.play")
     WebElement playBtn;
 
+
     public HomePage(WebDriver givenDriver) {
         super(givenDriver);
     }
     public WebElement getAvatarIcon(){
         return avatarIcon;
     }
-    public HomePage plusButton(){
+    public HomePage plusButton() {
+        wait.until(ExpectedConditions.elementToBeClickable(plus));
         plus.click();
         return this;
     }
@@ -45,22 +47,21 @@ public class HomePage extends BasePage {
         newPlaylist.click();
         return this;
     }
-    public HomePage newPlaylistName(String name){
+    public HomePage newPlaylistName(String name)  {
         newNameForPlaylist.sendKeys(name);
         newNameForPlaylist.sendKeys(Keys.ENTER);
         return this;
     }
-    public String getCreatedPlaylistMsg(){
-         wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div.success.show")));
-         return createdPlaylistMsg.getText();
+    public String getCreatedPlaylistMsg() {
+        return wait.until(ExpectedConditions.visibilityOf(createdPlaylistMsg)).getText();
     }
     public HomePage findPlaylist(){
         playlistName.click();
         return this;
     }
     public String getDeletePlaylistMsg(){
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div.success.show")));
-        return deleteMsg.getText();
+        return wait.until(ExpectedConditions.visibilityOf(deleteMsg)).getText();
+
     }
     public HomePage searchSong(String songName){
         searchField.sendKeys(songName);
@@ -73,6 +74,10 @@ public class HomePage extends BasePage {
     }
     public HomePage playButton(){
         playBtn.click();
+        return this;
+    }
+    public HomePage searchNewSong(String songName){
+        searchField.sendKeys(songName);
         return this;
     }
 

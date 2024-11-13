@@ -12,9 +12,17 @@ public class PlaylistPage extends BasePage {
     WebElement deleteBtn;
 
     public PlaylistPage (WebDriver givenDriver){super(givenDriver);}
-    public PlaylistPage deletePlaylist(){
-        deleteBtn.click();
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("button.ok"))).sendKeys(Keys.ENTER);
+    public PlaylistPage deletePlaylist() {
+        // Wait for and click the delete button
+        wait.until(ExpectedConditions.elementToBeClickable(deleteBtn)).click();
+
+        // Wait for the "OK" button in the confirmation dialog
+        WebElement okButton = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("button.ok"))); // Adjust the selector if needed
+
+        // Click the "OK" button to confirm deletion
+        okButton.click();
+
         return this;
     }
+
 }

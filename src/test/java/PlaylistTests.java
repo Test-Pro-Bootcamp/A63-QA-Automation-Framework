@@ -7,7 +7,7 @@ import pagefactory.PlaylistPage;
 
 public class PlaylistTests extends BaseTest {
     @Test
-    public void createPlaylist(){
+    public void createPlaylist()  {
         String name = "Playlist1";
         String expectedMsg = "Created playlist \"Playlist1.\"";
         LoginPage loginPage = new LoginPage(getDriver());
@@ -18,7 +18,7 @@ public class PlaylistTests extends BaseTest {
 
     }
     @Test
-    public void deletePlaylist(){
+    public void deletePlaylist()  {
         String expectedDeleteMsg = "Deleted playlist \"Playlist1.\"";
         LoginPage loginPage = new LoginPage(getDriver());
         HomePage homePage = new HomePage(getDriver());

@@ -16,14 +16,14 @@ public class BasePage {
     Actions actions;
     public BasePage(WebDriver givenDriver){
         driver = givenDriver;
-        wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         actions = new Actions(driver);
         PageFactory.initElements(driver, this);
     }
     public WebElement findElement(By locator){
         return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
     }
-    public void click(By locator){
+public void click(By locator){
         wait.until(ExpectedConditions.visibilityOfElementLocated(locator)).click();
     }
     public void doubleClick(By locator){

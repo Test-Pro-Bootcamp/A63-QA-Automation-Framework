@@ -7,7 +7,7 @@ import pagefactory.SearchPage;
 
 public class SongTests extends BaseTest {
     @Test
-    public  void addSongToPlaylist(){
+    public  void addSongToPlaylist()  {
         String expectedSongAddedMessage = "Added 1 song into \"Playlist1.\"";
         LoginPage loginPage = new LoginPage(getDriver());
         HomePage homePage = new HomePage(getDriver());
@@ -19,11 +19,12 @@ public class SongTests extends BaseTest {
 
     }
     @Test
-    public  void playSong() {
+    public  void playSong()  {
         LoginPage loginPage = new LoginPage(getDriver());
         HomePage homePage = new HomePage(getDriver());
         loginPage.provideEmail("bohdan.ivasiv@testpro.io").providePassword("TkSDMvReT57X$ym").submitBtn();
         homePage.playNextSongBtn().playButton();
         Assert.assertTrue(getDriver().findElement(By.cssSelector("span.pause")).isDisplayed());
     }
+
 }

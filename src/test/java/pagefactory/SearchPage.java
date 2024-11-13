@@ -17,25 +17,35 @@ public class SearchPage extends BasePage {
     WebElement playlist;
     @FindBy (css = "div.success.show")
     WebElement notification;
+    @FindBy(xpath = "//section[@class='songs'] //span[@class='cover']")
+    WebElement song;
+    @FindBy(xpath = "//section[@id='playlists'] //li[@class='playlist playlist'][1]")
+    WebElement targetArea;
     public SearchPage (WebDriver givenDriver){super(givenDriver);}
     public SearchPage clickViewAllBtn(){
-        viewAllBtn.click();
+        wait.until(ExpectedConditions.visibilityOf(viewAllBtn)).click();
         return this;
     }
     public SearchPage selectSong(){
-        firstSong.click();
+        wait.until(ExpectedConditions.visibilityOf(firstSong)).click();
         return this;
     }
     public SearchPage clickAddToButton(){
-        addToButton.click();
+        wait.until(ExpectedConditions.visibilityOf(addToButton)).click();
         return this;
     }
     public SearchPage choosePlaylist(){
         playlist.click();
         return this;
     }
-    public String getAddToPlaylistSuccessMsg(){
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div.success.show")));
-        return notification.getText();
+    public String getAddToPlaylistSuccessMsg()  {
+        return wait.until(ExpectedConditions.visibilityOf(notification)).getText();
+    }
+    public SearchPage dragAndDropSong(){
+        wait.until(ExpectedConditions.visibilityOf(song));
+        wait.until(ExpectedConditions.visibilityOf(targetArea));
+        actions.dragAndDrop(song, targetArea ).build().perform();
+        wait.until(ExpectedConditions.visibilityOf(notification)).getText();
+        return this;
     }
 }

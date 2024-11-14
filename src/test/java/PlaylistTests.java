@@ -5,8 +5,6 @@ import pagefactory.HomePage;
 
 public class PlaylistTests extends BaseTest {
 
-    // Fluent interfaces example from HW22
-
     @Test
     public void renamePlaylist() {
         String playlistName = "Test Pro Edited Playlist 2";

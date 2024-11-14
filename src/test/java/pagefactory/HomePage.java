@@ -8,7 +8,7 @@ import org.openqa.selenium.support.FindBy;
 public class HomePage extends BasePage {
     @FindBy(css = "img[class='avatar']")
     WebElement avatarIcon;
-    @FindBy(css = "playlist:nth-child(3)")
+    @FindBy(css = ".playlist:nth-child(3)")
     WebElement firstPlaylist;
     @FindBy(css = "[name='name']")
     WebElement playlistNameField;

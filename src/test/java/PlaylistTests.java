@@ -26,6 +26,9 @@ public class PlaylistTests extends BaseTest {
         loginPage.provideEmail("bohdan.ivasiv@testpro.io").providePassword("TkSDMvReT57X$ym").submitBtn();
         homePage.findPlaylist();
         playlistPage.deletePlaylist();
+        if(!homePage.isDeleteMsg()){
+            playlistPage.clickOkMsg();
+        }
         Assert.assertEquals(homePage.getDeletePlaylistMsg(), expectedDeleteMsg);
 
     }

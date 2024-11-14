@@ -1,8 +1,5 @@
 package pagefactory;
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
@@ -30,6 +27,10 @@ public class HomePage extends BasePage {
     WebElement nextSong;
     @FindBy(css = "span.play")
     WebElement playBtn;
+    @FindBy(xpath = "//li[@data-testid='playlist-context-menu-create-simple']")
+    WebElement menuCreateSimple;
+    @FindBy(css = "button[data-test='view-all-songs-btn']")
+    WebElement viewAllBtn;
 
 
     public HomePage(WebDriver givenDriver) {
@@ -41,9 +42,16 @@ public class HomePage extends BasePage {
     public HomePage plusButton() {
         wait.until(ExpectedConditions.elementToBeClickable(plus));
         plus.click();
+        try{
+            wait.until(ExpectedConditions.elementToBeClickable(menuCreateSimple));
+        }catch(TimeoutException e){
+            plus.click();
+            wait.until(ExpectedConditions.elementToBeClickable(menuCreateSimple));
+        }
         return this;
     }
     public HomePage newPlaylistNameBtn(){
+        wait.until(ExpectedConditions.elementToBeClickable(newPlaylist));
         newPlaylist.click();
         return this;
     }
@@ -59,12 +67,25 @@ public class HomePage extends BasePage {
         playlistName.click();
         return this;
     }
+    public Boolean isDeleteMsg (){
+        try{
+            wait.until(ExpectedConditions.visibilityOf(deleteMsg));
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
     public String getDeletePlaylistMsg(){
         return wait.until(ExpectedConditions.visibilityOf(deleteMsg)).getText();
 
     }
     public HomePage searchSong(String songName){
-        searchField.sendKeys(songName);
+        try{
+            wait.until(ExpectedConditions.elementToBeClickable(viewAllBtn));
+        }catch(TimeoutException e) {
+            searchField.sendKeys(songName);
+            wait.until(ExpectedConditions.elementToBeClickable(viewAllBtn));
+        }
         return this;
     }
     public HomePage playNextSongBtn(){
@@ -74,10 +95,6 @@ public class HomePage extends BasePage {
     }
     public HomePage playButton(){
         playBtn.click();
-        return this;
-    }
-    public HomePage searchNewSong(String songName){
-        searchField.sendKeys(songName);
         return this;
     }
 

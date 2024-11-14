@@ -20,6 +20,7 @@
             </class>
             <class name="SongTests">
                 <methods>
+
                     <include name="playSong"> </include>
                 </methods>
             </class>

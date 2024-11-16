@@ -1,13 +1,9 @@
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.annotations.Test;
 import org.testng.Assert;
-import pom.HomePage;
 import pom.LoginPage;
 import pom.AllSongs;
 
-public class Homework22 extends BaseTest {
+public class Homework24 extends BaseTest {
 
     @Test
     public void playSong() {

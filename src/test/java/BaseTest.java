@@ -47,7 +47,7 @@ public class BaseTest {
         //ChromeOptions options = new ChromeOptions();
         //options.addArguments("--remote-allow-origins=*");
         //driver = new ChromeDriver(options);
-        driver = new ChromeDriver();
+        //driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         driver.manage().window().maximize();
         wait = new WebDriverWait(driver , Duration.ofSeconds(10));
@@ -70,25 +70,7 @@ public class BaseTest {
         String gridURL = " http://172.20.9.129:4444"; //replace with your grid url
         //java -jar selenium-server-4.XX.0.jar standalone --selenium-manager true
         switch (browser) {
-            case "firefox": // gradle clean test -Dbrowser=firefox
-                WebDriverManager.firefoxdriver().setup();
-                return driver = new FirefoxDriver();
-
-            case "Microsoft Edge": // gradle clean test -Dbrowser-MicrosoftEdge
-                WebDriverManager.edgedriver().setup();
-                EdgeOptions edgeOptions = new EdgeOptions();
-                edgeOptions.addArguments("--remote-allow-origins=*");
-                return driver = new EdgeDriver(edgeOptions);
-
-            case "grid-edge": // gradle clean test -Dbrowser-grid-edge
-                caps.setCapability("browserName", "MicrosoftEdge");
-                return driver = new RemoteWebDriver(URI.create(gridURL).toURL(), caps);
-
-            case "grid-firefox": // gradle clean test -Dbrowser-grid-firefox
-                caps.setCapability("browserName", "firefox");
-                return driver = new RemoteWebDriver(URI.create(gridURL).toURL(), caps);
-
-            case "grid-chrome": // gradle clean test -Dbrowser-grid-chrome
+                case "grid-chrome": // gradle clean test -Dbrowser-grid-chrome
                 caps.setCapability("browserName", "chrome");
                 return driver = new RemoteWebDriver(URI.create(gridURL).toURL(), caps);
 

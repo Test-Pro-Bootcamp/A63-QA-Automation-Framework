@@ -33,7 +33,6 @@ public class BaseTest {
 
     @BeforeSuite
     static void setupClass() {
-        //WebDriverManager.chromedriver().setup();
         WebDriverManager.chromedriver().setup();
     }
 
@@ -73,6 +72,12 @@ public class BaseTest {
                 case "grid-chrome": // gradle clean test -Dbrowser-grid-chrome
                 caps.setCapability("browserName", "chrome");
                 return driver = new RemoteWebDriver(URI.create(gridURL).toURL(), caps);
+
+            case "MicrosoftEdge": // gradle clean test -Dbrowser=MicrosoftEdge
+                WebDriverManager.edgedriver().setup();
+                EdgeOptions edgeOptions = new EdgeOptions();
+                edgeOptions.addArguments("--remote-allow-origins=+");
+                return driver = new EdgeDriver (edgeOptions);
 
             default:
                 WebDriverManager.chromedriver().setup();

@@ -1,0 +1,2 @@
+public class HomepageTests {
+}

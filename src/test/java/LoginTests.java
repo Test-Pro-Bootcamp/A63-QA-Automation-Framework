@@ -13,3 +13,5 @@ public class LoginTests extends BaseTest {
                 .providePassword("Testpro1234$")
                 .clickSubmit();
         Assert.assertTrue(homePage.isAvatarDisplayed());
+    }
+}

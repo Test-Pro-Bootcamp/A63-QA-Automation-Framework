@@ -15,23 +15,28 @@ public class HomePage extends BasePage {
     @FindBy(css = "div.success.show")
     WebElement popUpNotification;
 
-    public HomePage(WebDriver givenDriver) { super(givenDriver); }
+    public HomePage(WebDriver givenDriver) {
+        super(givenDriver);
+    }
 
         //Fluent interface
-        public HomePage doubleClickPlaylist() {
-            doubleClick(firstPlaylist);
-            return this;
-        }
-        public HomePage enterNewPlaylistName (String playlistName){
-            findElement(playlistNameField).sendKeys(playlistName);
-            findElement(playlistNameField).sendKeys(Keys.chord(Keys.CONTROL, "a", Keys.BACK_SPACE));
-            findElement(playlistNameField).sendKeys(playlistName);
-            findElement(playlistNameField).sendKeys(Keys.ENTER);
-            findElement(popUpNotification); //wait for the popup notification for successful updating of the playlist name
-            return this;
-        }
+    public HomePage doubleClickPlaylist() {
+        doubleClick(firstPlaylist);
+        return this;
+    }
 
+    public HomePage enterNewPlaylistName (String playlistName) {
+        findElement(playlistNameField).sendKeys(Keys.chord(Keys.CONTROL, "a", Keys.BACK_SPACE));
+        findElement(playlistNameField).sendKeys(playlistName);
+        findElement(playlistNameField).sendKeys(Keys.ENTER);
+        findElement(popUpNotification); //wait for the popup notification for successful updating of the playlist name
+        return this;
+    }
 
+    public HomePage clickProfileIcon() {
+        click(avatarIcon);
+        return this;
+    }
     //Changed the approach for assert
     public String getPlaylistName() {
         return findElement(firstPlaylist).getText();

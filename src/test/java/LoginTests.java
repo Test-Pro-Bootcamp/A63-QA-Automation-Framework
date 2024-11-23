@@ -19,7 +19,6 @@ public class LoginTests extends BaseTest {
 
     @Test
     public void loginInValidEmailPassword() {
-        String url = "https://qa.koel.app/";
         //LoginPage loginPage = new LoginPage(driver);
         LoginPage loginPage = new LoginPage(getDriver());
         loginPage.provideEmail("invalidemail@testpro.io ")
@@ -30,7 +29,6 @@ public class LoginTests extends BaseTest {
 
     @Test (enabled = false)
     public void loginInEmptyEmailPassword() {
-        String url = "https://qa.koel.app/";
         //LoginPage loginPage = new LoginPage(driver);
         LoginPage loginPage = new LoginPage(getDriver());
         loginPage.provideEmail(" ")

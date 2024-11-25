@@ -45,6 +45,6 @@ public class BaseTest {
         emailInput.sendKeys(email);
         passwordInput.sendKeys(password);
         loginButton.click();
-    }
 
+    }
 }

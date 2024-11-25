@@ -15,7 +15,7 @@ public class LoginTests extends BaseTest {
     @Test
     public void loginWithEmptyCredentials() {
         WebElement logo = driver.findElement(By.cssSelector(".logo"));
-        login("nazar@testpro.io", " ");
+        login("nazar@testpro.io", "");
         Assert.assertTrue(logo.isDisplayed());
     }
 }

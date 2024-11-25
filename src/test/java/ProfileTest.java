@@ -9,7 +9,7 @@ public class ProfileTest extends BaseTest {
 
 
     @Test
-    public void changeProfileNameTest(){
+    public void changeProfileNameTest() throws InterruptedException {
         String newName = UUID.randomUUID().toString();
         login("nazar@testpro.io", "Pomidor2115");
         WebElement avatar = driver.findElement(By.cssSelector("#userBadge, [class=profile]"));
@@ -17,12 +17,12 @@ public class ProfileTest extends BaseTest {
         WebElement currentPasswordField = driver.findElement(By.cssSelector("#inputProfileCurrentPassword"));
         currentPasswordField.sendKeys("Pomidor2115");
         WebElement nameInput = driver.findElement(By.cssSelector("#inputProfileName"));
-        nameInput.click();
         nameInput.clear();
         nameInput.sendKeys(newName);
         WebElement saveBtn = driver.findElement(By.cssSelector(".btn-submit"));
         saveBtn.click();
+        Thread.sleep(3000);
         WebElement userNameLabel = driver.findElement(By.cssSelector("#userBadge span[class=name]"));
-        Assert.assertNotEquals(newName, userNameLabel.getText());
+        Assert.assertEquals(newName, userNameLabel.getText());
     }
 }

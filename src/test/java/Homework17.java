@@ -7,6 +7,10 @@ public class Homework17 extends BaseTest {
     @Test
     public void addSongToPlaylist() throws InterruptedException {
         login("nazar@testpro.io", "Pomidor2115");
+        int width = 1920;
+        int height = 1080;
+        Dimension dimension = new Dimension(width, height);
+        driver.manage().window().setSize(dimension);
 //        WebElement newPlaylist = driver.findElement(By.cssSelector("sidebar-create-playlist-btn"));
 //        newPlaylist.click();
 //        WebElement simplePlaylist = driver.findElement(By.cssSelector("playlist-context-menu-create-simple"));
@@ -16,10 +20,6 @@ public class Homework17 extends BaseTest {
 //        playlistName.sendKeys(Keys.RETURN);
 //        WebElement createdPlaylistText = driver.findElement(By.cssSelector("[class='success show']"));
 //        Assert.assertTrue(createdPlaylistText.isDisplayed());
-        int width = 1920;
-        int height = 1080;
-        Dimension dimension = new Dimension(width, height);
-        driver.manage().window().setSize(dimension);
         WebElement allSongs = driver.findElement(By.cssSelector("[href='#!/songs']"));
         allSongs.click();
         Thread.sleep(500);
@@ -32,7 +32,7 @@ public class Homework17 extends BaseTest {
         WebElement playlist1 = driver.findElement(By.xpath("//*[@id='songsWrapper']/header/div[3]/div/section[1]/ul/li[5]"));
         playlist1.click();
         Thread.sleep(500);
-        //WebElement songAdded = driver.findElement(By.cssSelector("[class=success show]"));
-
+        WebElement songAdded = driver.findElement(By.cssSelector("body > div.alertify-logs.top.right > div"));
+        Assert.assertTrue(songAdded.isDisplayed());
     }
 }

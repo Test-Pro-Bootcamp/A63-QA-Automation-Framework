@@ -1,15 +1,15 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<!--<?xml version="1.0" encoding="UTF-8"?>-->
+<!--<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >-->
 
-<suite name="TestNG">
+<!--<suite name="TestNG">-->
 
-    <test name="Example Test" preserve-order="false">
+<!--    <test name="Example Test" preserve-order="false">-->
 <!--        <classes>-->
 <!--            <class name="LoginTests"/>-->
 <!--            <class name="RegistrationNavigationTest"/>-->
 <!--            <class name="ProfileTest"/>-->
 <!--            <class name="AddSongToPlaylistTest"/>-->
-
+<!--            <class name="Homework18"/>-->
 <!--        </classes>-->
-    </test>
-</suite>
+<!--    </test>-->
+<!--</suite>-->

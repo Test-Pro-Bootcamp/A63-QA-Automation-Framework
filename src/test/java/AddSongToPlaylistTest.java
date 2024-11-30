@@ -2,7 +2,7 @@ import org.openqa.selenium.*;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class Homework17 extends BaseTest {
+public class AddSongToPlaylistTest extends BaseTest {
 
     @Test
     public void addSongToPlaylist() throws InterruptedException {
@@ -23,13 +23,13 @@ public class Homework17 extends BaseTest {
         WebElement allSongs = driver.findElement(By.cssSelector("[href='#!/songs']"));
         allSongs.click();
         Thread.sleep(500);
-        WebElement testSong = driver.findElement(By.xpath("//*[@id='songsWrapper']/div/div/div[1]/table/tr[3]"));
+        WebElement testSong = driver.findElement(By.xpath("//div[@class='item-container']//tr[@class='song-item']//td[text()='Riqui-Riqui']"));
         testSong.click();
         Thread.sleep(500);
-        WebElement addTo = driver.findElement(By.cssSelector("#songsWrapper > header > div.song-list-controls > span > button.btn-add-to"));
+        WebElement addTo = driver.findElement(By.cssSelector("[data-test='add-to-btn']"));
         addTo.click();
         Thread.sleep(500);
-        WebElement playlist1 = driver.findElement(By.xpath("//*[@id='songsWrapper']/header/div[3]/div/section[1]/ul/li[5]"));
+        WebElement playlist1 = driver.findElement(By.xpath("//section[@id='songsWrapper']//section[@class='existing-playlists']//ul//li[contains(text(), 'Playlist 1')]"));
         playlist1.click();
         Thread.sleep(500);
         WebElement songAdded = driver.findElement(By.cssSelector("body > div.alertify-logs.top.right > div"));

@@ -8,7 +8,7 @@ import java.util.UUID;
 public class ProfileTest extends BaseTest {
 
 
-    @Test
+    @Test(groups = "Smoke")
     public void changeProfileNameTest() throws InterruptedException {
         String newName = UUID.randomUUID().toString();
         login("nazar@testpro.io", "Pomidor2115");

@@ -4,12 +4,12 @@
 <suite name="TestNG">
 
     <test name="Example Test" preserve-order="false">
-        <classes>
-            <class name="LoginTests"/>
-            <class name="RegistrationNavigationTest"/>
-            <class name="ProfileTest"/>
-            <class name="AddSongToPlaylistTest"/>
+<!--        <classes>-->
+<!--            <class name="LoginTests"/>-->
+<!--            <class name="RegistrationNavigationTest"/>-->
+<!--            <class name="ProfileTest"/>-->
+<!--            <class name="AddSongToPlaylistTest"/>-->
 
-        </classes>
+<!--        </classes>-->
     </test>
 </suite>

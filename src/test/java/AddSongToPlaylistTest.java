@@ -4,7 +4,7 @@ import org.testng.annotations.Test;
 
 public class AddSongToPlaylistTest extends BaseTest {
 
-    @Test
+    @Test(groups = "Smoke")
     public void addSongToPlaylist() throws InterruptedException {
         login("nazar@testpro.io", "Pomidor2115");
         int width = 1920;

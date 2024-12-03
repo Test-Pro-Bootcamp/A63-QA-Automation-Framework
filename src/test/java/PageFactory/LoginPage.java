@@ -11,7 +11,8 @@ public class LoginPage extends BasePage{
     WebElement passwordField;
     @FindBy(css = "button[type='submit']")
     WebElement submitBtn;
-
+    @FindBy(css= "div[class='logo']")
+    WebElement koelLogo;
     public LoginPage(WebDriver givendriver) {
         super (givendriver);
     }
@@ -26,5 +27,7 @@ public class LoginPage extends BasePage{
     public LoginPage clickSubmit(){
         submitBtn.click();
         return this;
+    }
+    public boolean isKoelLogoDisplayed(){return koelLogo.isDisplayed();
     }
 }

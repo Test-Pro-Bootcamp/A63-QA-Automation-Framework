@@ -42,9 +42,11 @@ public class BaseTest {
         actions = new Actions(driver);
         url = BaseURL;
         navigateToPage();
+
     }
-    @AfterMethod
     public void navigateToPage() {driver.get(url);}
+
+    @AfterMethod
     public void closeBrowser() {driver.quit();}
     public static WebDriver pickBrowser(String browser) throws MalformedURLException{
         DesiredCapabilities caps = new DesiredCapabilities();

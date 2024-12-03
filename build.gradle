@@ -17,7 +17,7 @@ dependencies {
 
 test {
     useTestNG() {
-        suites "src/test/resources/KoelRegresion.xml"
+        suites "src/test/resources/KoelSmoke.xml"
         systemProperty "browser", System.getProperty("browser")
     }
 }

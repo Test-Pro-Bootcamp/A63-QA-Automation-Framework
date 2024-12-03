@@ -14,4 +14,14 @@ public class LoginTests extends BaseTest {
                 .clickSubmit();
         Assert.assertTrue(homePage.isAvatarDisplayed());
     }
+    @Test
+    public void logout(){
+        HomePage homepage = new HomePage(driver);
+        LoginPage loginPage = new LoginPage(driver);
+        loginPage.provideEmail("victoria.mereneanu@testpro.io")
+                .providePassword("Testpro1234$")
+                .clickSubmit();
+        homepage.logoutUser();
+        Assert.assertTrue(loginPage.isKoelLogoDisplayed());
+    }
 }

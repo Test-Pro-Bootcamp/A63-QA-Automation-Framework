@@ -27,15 +27,8 @@ public class HomepageTests extends BaseTest {
      homePage.clickProfileLink();
      Assert.assertTrue(homePage.isProfileFormDisplayed());
  }
- @Test
-    public void abilityToSearchTitles(){
-     LoginPage loginPage = new LoginPage(driver);
-     HomePage homePage = new HomePage(driver);
 
-     loginPage.provideEmail("victoria.mereneanu@testpro.io")
-             .providePassword("Testpro1234$")
-             .clickSubmit();
-     homePage.searchTitle("Dark days");
-     Assert.
- }
+
+
+
 }

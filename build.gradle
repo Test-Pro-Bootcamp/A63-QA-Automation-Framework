@@ -19,5 +19,9 @@ test {
     useTestNG() {
         suites "src/test/resources/TestNG.xml"
         //suites "src/test/resources/Smoke.xml"
+<<<<<<< Updated upstream
+=======
+        //suites "src/test/resources/Homework18.xml"
+>>>>>>> Stashed changes
     }
 }

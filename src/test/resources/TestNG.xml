@@ -2,6 +2,7 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
 <suite name="TestNG">
+<<<<<<< Updated upstream
 
     <test name="Example Test" preserve-order="false">
 <!--        <classes>-->
@@ -11,5 +12,16 @@
 <!--            <class name="AddSongToPlaylistTest"/>-->
 
 <!--        </classes>-->
+=======
+<parameter name="baseUrl" value="https://qa.koel.app/"/>
+    <test name="Example Test" preserve-order="false">
+        <classes>
+            <class name="LoginTests"/>
+            <class name="RegistrationNavigationTest"/>
+            <class name="ProfileTest"/>
+            <class name="AddSongToPlaylistTest"/>
+            <class name="Homework18"/>
+        </classes>
+>>>>>>> Stashed changes
     </test>
 </suite>

@@ -4,7 +4,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 
-public class Homework18 extends BaseTest {
+public class playSongTest extends BaseTest {
 
     @Test (groups = "Homework18")
     public void playSong() throws InterruptedException {

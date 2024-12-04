@@ -21,6 +21,13 @@ public class HomePage extends BasePage{
     WebElement profileForm;
     @FindBy(css = "div[id='searchForm']")
     WebElement searchField;
+    @FindBy(css = "button[data-test='view-all-songs-btn']")
+    WebElement viewAllBtn;
+    @FindBy(xpath = "//section[@id='songResultsWrapper'] //tr[@class='song-item'][1]")
+    WebElement firstSong;
+    @FindBy (css = "li[class='has-sub']")
+    WebElement addToBtn;
+    @FindBy(css = " ")
     public HomePage(WebDriver givendriver) {super(givendriver);}
     public HomePage doubleClickPaylist() {
         doubleClick(firstPlaylist);
@@ -48,9 +55,21 @@ public class HomePage extends BasePage{
     public boolean isProfileFormDisplayed(){
         return profileForm.isDisplayed();
     }
-    public HomePage searchTitle(String title) {
+    public HomePage searchSong(String title) {
         searchField.sendKeys(title);
         searchField.click();
+        return this;
+    }
+    public HomePage viewAllSongs(){
+        viewAllBtn.click();
+        return this;
+    }
+    public HomePage selectFirstSong(){
+        contextClick(firstSong);
+        return this;
+    }
+    public HomePage clickAddSong(){
+        addToBtn.click();
         return this;
     }
 }

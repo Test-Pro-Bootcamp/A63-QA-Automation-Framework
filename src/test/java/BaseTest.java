@@ -24,6 +24,7 @@ public class BaseTest {
 
     @BeforeMethod
     @Parameters("baseUrl")
+
     public void SetUpDriver(String url) {
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--remote-allow-origins=*");

@@ -11,7 +11,7 @@
             <class name="ProfileTest"/>
             <class name="AddSongToPlaylistTest"/>
             <class name="playSongTest"/>
-            <class name="Homework19"/>
+            <class name="DeletePlaylistTest"/>
 
         </classes>
 

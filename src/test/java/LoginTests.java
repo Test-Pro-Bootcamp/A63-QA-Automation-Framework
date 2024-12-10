@@ -15,7 +15,7 @@ public class LoginTests extends BaseTest {
 
     @Test (groups = "Regression", dataProvider = "incorrectCredentials")
     public void loginWithEmptyCredentials(String email, String password) {
-        WebElement logo = driver.findElement(By.cssSelector(".logo"));
+        WebElement logo = driver.findElement(By.cssSelector("[class=logo]"));
         login(email, password);
         //empty email and password
         //empty email and empty password
@@ -28,6 +28,7 @@ public class LoginTests extends BaseTest {
     @DataProvider(name = "incorrectCredentials")
     public Object [][] provideIncorrectCredentials() {
         return new Object[][] {
+                {"", ""},
                 {"nazar@testpro.io", ""},
                 {"", "Pomidor2115"},
                 {"nazar@testpro.iom", "Pomidor2115"},

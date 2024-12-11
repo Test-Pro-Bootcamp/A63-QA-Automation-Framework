@@ -12,6 +12,7 @@
             <class name="AddSongToPlaylistTest"/>
             <class name="playSongTest"/>
             <class name="DeletePlaylistTest"/>
+            <class name="PlaySongByContextClickTest"/>
 
         </classes>
 

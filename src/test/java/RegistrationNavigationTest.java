@@ -7,7 +7,7 @@ import org.testng.annotations.Test;
 public class RegistrationNavigationTest extends BaseTest {
 
     @Test(groups = "Smoke")
-    public void registrationNavigation() throws InterruptedException {
+    public void registrationNavigation() {
 
         WebElement registrationLink = driver.findElement(By.cssSelector("[href='registration']"));
         registrationLink.click();

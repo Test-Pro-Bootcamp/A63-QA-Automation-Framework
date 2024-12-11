@@ -1,4 +1,5 @@
 import org.openqa.selenium.*;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
@@ -10,15 +11,14 @@ import static org.bouncycastle.oer.its.template.ieee1609dot2.basetypes.Ieee1609D
 
 public class DeletePlaylistTest extends BaseTest {
     @Test
-    public void deletePlaylist() throws InterruptedException {
-
+    public void deletePlaylist() {
         login("nazar@testpro.io", "Pomidor2115");
         int width = 1920;
         int height = 1080;
         Dimension dimension = new Dimension(width, height);
         driver.manage().window().setSize(dimension);
-        Thread.sleep(3000); //koel page does not Really loading completely without that one threadsleep
         WebElement newPlaylist = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("[data-testid='sidebar-create-playlist-btn']")));
+        actions.moveToElement(newPlaylist).perform();
         newPlaylist.click();
         WebElement simplePlaylist = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("[data-testid='playlist-context-menu-create-simple']")));
         simplePlaylist.click();

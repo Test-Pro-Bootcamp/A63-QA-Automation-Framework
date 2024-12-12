@@ -1,13 +1,12 @@
 import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 
-public class PlaySongByContextClickTest extends BaseTest {
+public class PlaySongByActionClickTest extends BaseTest {
 
     @Test
     public void playSongByContextClick() {

@@ -23,3 +23,9 @@ test {
 
     }
 }
+
+task smokeTest(type: Test) {
+    useTestNG() {
+        suites "src/test/resources/Smoke.xml"
+    }
+}

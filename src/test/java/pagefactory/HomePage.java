@@ -33,6 +33,7 @@ public class HomePage extends BasePage {
     WebElement viewAllBtn;
 
 
+
     public HomePage(WebDriver givenDriver) {
         super(givenDriver);
     }
@@ -97,6 +98,7 @@ public class HomePage extends BasePage {
         playBtn.click();
         return this;
     }
+
 
 
 

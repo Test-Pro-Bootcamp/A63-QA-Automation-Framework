@@ -10,6 +10,8 @@ public class LoginPage extends BasePage {
     WebElement passwordField;
     @FindBy(css = "button[type='submit']")
     WebElement submit;
+    @FindBy(css = "div a[href='registration']")
+    WebElement registrationLink;
     public LoginPage(WebDriver givenDriver){
         super(givenDriver);
     }
@@ -23,6 +25,10 @@ public class LoginPage extends BasePage {
     }
     public LoginPage submitBtn(){
         submit.click();
+        return this;
+    }
+    public LoginPage registrationOrPassword(){
+        registrationLink.click();
         return this;
     }
 }

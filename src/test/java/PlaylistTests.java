@@ -17,6 +17,8 @@ public class PlaylistTests extends BaseTest {
         Assert.assertEquals(homePage.getCreatedPlaylistMsg(),expectedMsg);
 
     }
+
+
     @Test
     public void deletePlaylist()  {
         String expectedDeleteMsg = "Deleted playlist \"Playlist1.\"";

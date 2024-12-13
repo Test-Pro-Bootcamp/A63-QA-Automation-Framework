@@ -7,7 +7,7 @@
         <classes>
             <class name="LoginTests"/>
             <class name="PlaylistTests"/>
-            <class name="SongTests"/>
+            <class name="AccountCreationTests"/>
 
 
         </classes>

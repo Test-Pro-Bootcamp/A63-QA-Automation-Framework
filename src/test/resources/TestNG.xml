@@ -13,6 +13,8 @@
             <class name="playSongTest"/>
             <class name="DeletePlaylistTest"/>
             <class name="PlaySongByActionClickTest"/>
+            <class name="HW21"/>
+
 
         </classes>
 

@@ -10,7 +10,7 @@ public class ProfileTest extends BaseTest {
 
 
     @Test(groups = "Smoke")
-    public void changeProfileNameTest() {
+    public void changeProfileNameTest() throws InterruptedException {
         String newName = UUID.randomUUID().toString();
         login("nazar@testpro.io", "Pomidor2115");
         WebElement avatar = driver.findElement(By.cssSelector("#userBadge, [class=profile]"));
@@ -22,7 +22,11 @@ public class ProfileTest extends BaseTest {
         nameInput.sendKeys(newName);
         WebElement saveBtn = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".btn-submit")));
         saveBtn.click();
+        Thread.sleep(1000); //does not work without thread sleep, although the code seems correct
         WebElement userNameLabel = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#userBadge span[class=name]")));
-        Assert.assertEquals(newName, userNameLabel.getText()); //todo fix the matter with the test
+        Assert.assertEquals(newName, userNameLabel.getText());
+//        Thread.sleep(3000);
+//        WebElement userNameLabel = driver.findElement(By.cssSelector("#userBadge span[class=name]"));
+//        Assert.assertEquals(newName, userNameLabel.getText());
     }
 }

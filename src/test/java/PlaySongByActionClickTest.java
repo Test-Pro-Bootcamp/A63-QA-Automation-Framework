@@ -13,10 +13,6 @@ public class PlaySongByActionClickTest extends BaseTest {
         String songLocator = "//article[@data-test='song-card']//span[contains(text(), '%s')]";
         String songName = "Way Of The Samurai";
         login("nazar@testpro.io", "Pomidor2115");
-        int width = 1920;
-        int height = 1080;
-        Dimension dimension = new Dimension(width, height);
-        driver.manage().window().setSize(dimension);
         WebElement allSongsMenuItem = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("[id='sidebar'] .songs")));
         actions.click(allSongsMenuItem).perform();
         WebElement song = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(String.format(songLocator, songName))));

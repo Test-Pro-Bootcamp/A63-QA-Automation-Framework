@@ -18,8 +18,9 @@ public class BaseTest {
     public static String url = null;
     public static WebDriverWait wait = null;
     public static Actions actions = null;
-    public String newPlaylistName = "Sample Edited Playlist";
-    public String currentPassword;
+    public String createdPlaylist = "Created playlist \"Test Pro Playlist.\"";
+    public String createdPlaylistTwoChar = "Created playlist \"Tp.\"";
+    public String createdPlaylistTenPlusChar = "Created playlist \"Tp1234567890.\"";
 
     @BeforeSuite
     static void setupClass() {

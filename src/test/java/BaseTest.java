@@ -8,10 +8,7 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.BeforeSuite;
-import org.testng.annotations.Parameters;
+import org.testng.annotations.*;
 
 import java.time.Duration;
 import java.util.List;
@@ -22,7 +19,7 @@ public class BaseTest {
     public static WebDriverWait wait = null;
     public static Actions actions = null;
     public String newPlaylistName = "Sample Edited Playlist";
-
+    public String currentPassword;
 
     @BeforeSuite
     static void setupClass() {
@@ -54,5 +51,13 @@ public class BaseTest {
         driver.get(url);
     }
 
+    @DataProvider(name = "IncorrectPswrdRequirements")
+    public static Object[][] getDataFromDataProviders(){
+        return new Object[][]{
+                {"Issam@testpro1", "Issam@1"},
+                {"Issam@testpro1", "ISSAM@1234567"},
+                {"Issam@testpro1", "issam@1234567"},
+        };
+    }
 }
 

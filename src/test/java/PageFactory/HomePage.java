@@ -27,7 +27,7 @@ public class HomePage extends BasePage{
     WebElement firstSong;
     @FindBy (css = "li[class='has-sub']")
     WebElement addToBtn;
-    @FindBy(css = " ")
+    
     public HomePage(WebDriver givendriver) {super(givendriver);}
     public HomePage doubleClickPaylist() {
         doubleClick(firstPlaylist);

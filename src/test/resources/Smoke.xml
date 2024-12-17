@@ -13,7 +13,7 @@
             </methods>
             </class>
             <class name="ProfileTest"/>
-            <class name="playSongTest"/>
+            <class name="PlaySongTest"/>
         </classes>
 
     </test>

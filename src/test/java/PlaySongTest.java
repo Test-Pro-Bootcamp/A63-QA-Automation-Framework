@@ -1,12 +1,11 @@
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 
-public class playSongTest extends BaseTest {
+public class PlaySongTest extends BaseTest {
 
     @Test (groups = "Homework18")
     public void playSong() {

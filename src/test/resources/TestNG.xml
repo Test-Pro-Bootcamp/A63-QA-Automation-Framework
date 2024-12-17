@@ -10,10 +10,10 @@
             <class name="RegistrationNavigationTest"/>
             <class name="ProfileTest"/>
             <class name="AddSongToPlaylistTest"/>
-            <class name="playSongTest"/>
+            <class name="PlaySongTest"/>
             <class name="DeletePlaylistTest"/>
-            <class name="PlaySongByActionClickTest"/>
-            <class name="Homework21"/>
+            <class name="BasePage"/>
+            <class name="RenamePlaylistTest"/>
 
 
         </classes>

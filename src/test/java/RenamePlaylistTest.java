@@ -3,10 +3,9 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 
-public class Homework21 extends BaseTest{
+public class RenamePlaylistTest extends BaseTest{
 
     String currentPlaylistName = "Playlist 1";
     String newPlaylistName = "Playlist 2";
@@ -15,21 +14,7 @@ public class Homework21 extends BaseTest{
     public void renamePlaylist() throws InterruptedException {
 
         login("nazar@testpro.io", "Pomidor2115");
-//        WebElement newPlaylist = wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("[data-testid='sidebar-create-playlist-btn']")));
-//        Thread.sleep(1000);
-//        actions.moveToElement(newPlaylist).click().perform();
-//        newPlaylist.click();
-//        Thread.sleep(1000);
-//        WebElement simplePlaylist = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("[data-testid='playlist-context-menu-create-simple']")));
-//        simplePlaylist.click();
-//        Thread.sleep(1000);
-//        WebElement playlistName = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#playlists > form > input[type=text]")));
-//        playlistName.sendKeys(currentPlaylistName);
-//        playlistName.sendKeys(Keys.ENTER);
-//        Thread.sleep(1000);
-//        WebElement createdPlaylistText = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("[class='success show']")));
-//        Assert.assertTrue(createdPlaylistText.isDisplayed());
-//        Thread.sleep(1000);
+
         WebElement playlist = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(String.format("//section[@id='playlists']//li//a[text()='%s']", currentPlaylistName))));
         Thread.sleep(1000);
         actions.moveToElement(playlist).contextClick().perform();

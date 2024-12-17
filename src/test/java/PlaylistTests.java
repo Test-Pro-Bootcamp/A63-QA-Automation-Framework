@@ -17,6 +17,37 @@ public class PlaylistTests extends BaseTest {
         Assert.assertEquals(homePage.getCreatedPlaylistMsg(),expectedMsg);
 
     }
+    @Test
+    public void createPlaylistWithTheSameName()  {
+        String name = "Playlist1";
+        LoginPage loginPage = new LoginPage(getDriver());
+        HomePage homePage = new HomePage(getDriver());
+        loginPage.provideEmail("bohdan.ivasiv@testpro.io").providePassword("TkSDMvReT57X$ym").submitBtn();
+        homePage.plusButton().newPlaylistNameBtn().newPlaylistName(name);
+        Assert.assertTrue(homePage.nameField.isDisplayed());
+
+    }
+    @Test
+    public void createPlaylistWithLessThan3Characters()  {
+        String name = "P";
+        LoginPage loginPage = new LoginPage(getDriver());
+        HomePage homePage = new HomePage(getDriver());
+        loginPage.provideEmail("bohdan.ivasiv@testpro.io").providePassword("TkSDMvReT57X$ym").submitBtn();
+        homePage.plusButton().newPlaylistNameBtn().newPlaylistName(name);
+        Assert.assertTrue(homePage.nameField.isDisplayed());
+
+    }
+    @Test
+    public void createPlaylistWithMoreThan10Characters()  {
+        String name = "Playlist1Playlist1Playlist1";
+        LoginPage loginPage = new LoginPage(getDriver());
+        HomePage homePage = new HomePage(getDriver());
+        loginPage.provideEmail("bohdan.ivasiv@testpro.io").providePassword("TkSDMvReT57X$ym").submitBtn();
+        homePage.plusButton().newPlaylistNameBtn().newPlaylistName(name);
+        Assert.assertTrue(homePage.nameField.isDisplayed());
+
+    }
+
 
 
     @Test

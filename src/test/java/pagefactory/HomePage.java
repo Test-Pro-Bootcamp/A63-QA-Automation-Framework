@@ -31,6 +31,8 @@ public class HomePage extends BasePage {
     WebElement menuCreateSimple;
     @FindBy(css = "button[data-test='view-all-songs-btn']")
     WebElement viewAllBtn;
+    @FindBy(css = "form.create input[name='name']")
+    public WebElement nameField;
 
 
 
@@ -61,9 +63,14 @@ public class HomePage extends BasePage {
         newNameForPlaylist.sendKeys(Keys.ENTER);
         return this;
     }
+    public HomePage nameFieldForNewPlaylist(){
+        wait.until(ExpectedConditions.visibilityOf(nameField));
+        return this;
+    }
     public String getCreatedPlaylistMsg() {
         return wait.until(ExpectedConditions.visibilityOf(createdPlaylistMsg)).getText();
     }
+
     public HomePage findPlaylist(){
         playlistName.click();
         return this;

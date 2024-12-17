@@ -6,21 +6,19 @@ import org.testng.annotations.Test;
 public class AddSongToPlaylistTest extends BaseTest {
 
     @Test(groups = "Smoke")
-    public void addSongToPlaylist() {
+    public void addSongToPlaylist() throws InterruptedException {
+        String testPlaylistName = "Playlist 1";
         login("nazar@testpro.io", "Pomidor2115");
-        int width = 1920;
-        int height = 1080;
-        Dimension dimension = new Dimension(width, height);
-        driver.manage().window().setSize(dimension);
-//        WebElement newPlaylist = driver.findElement(By.cssSelector("sidebar-create-playlist-btn"));
-//        newPlaylist.click();
-//        WebElement simplePlaylist = driver.findElement(By.cssSelector("playlist-context-menu-create-simple"));
-//        simplePlaylist.click();
-//        WebElement playlistName = driver.findElement(By.cssSelector("#playlists > form > input[type=text]"));
-//        playlistName.sendKeys("Playlist 1");
-//        playlistName.sendKeys(Keys.RETURN);
-//        WebElement createdPlaylistText = driver.findElement(By.cssSelector("[class='success show']"));
-//        Assert.assertTrue(createdPlaylistText.isDisplayed());
+        WebElement newPlaylist = wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("[data-testid='sidebar-create-playlist-btn']")));
+        Thread.sleep(1000);
+        actions.moveToElement(newPlaylist).click().perform();
+        newPlaylist.click();
+        WebElement simplePlaylist = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("[data-testid='playlist-context-menu-create-simple']")));
+        simplePlaylist.click();
+        WebElement playlistName = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#playlists > form > input[type=text]")));
+        playlistName.sendKeys(testPlaylistName);
+        playlistName.sendKeys(Keys.ENTER);
+        Thread.sleep(1000);
         WebElement allSongs = driver.findElement(By.cssSelector("[href='#!/songs']"));
         allSongs.click();
         WebElement testSong = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='item-container']//tr[@class='song-item']//td[text()='Riqui-Riqui']")));

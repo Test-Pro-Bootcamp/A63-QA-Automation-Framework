@@ -26,13 +26,15 @@ public class DeletePlaylistTest extends BaseTest {
         playlistName.sendKeys(Keys.ENTER);
         WebElement createdPlaylistText = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("[class='success show']")));
         Assert.assertTrue(createdPlaylistText.isDisplayed());
-        WebElement findPlaylist = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[contains (text(), 'Playlist 1')]")));
+        WebElement findPlaylist = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//section[@id='playlists']//li//a[text()='Playlist 1']")));
+        Thread.sleep(1000);
         findPlaylist.click();
-        WebElement deletePlaylist = driver.findElement(By.cssSelector("button.del.btn-delete-playlist"));
-        deletePlaylist.click();
+        WebElement deletePlaylist = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("[class='del btn-delete-playlist']")));
+        Thread.sleep(1000);
+        actions.moveToElement(deletePlaylist).click().perform();
 //        WebElement deletePlaylistConfirm = driver.findElement(By.cssSelector("[button.ok]"));
 //        deletePlaylistConfirm.click();
-        WebElement playlistDeletedMessage = driver.findElement(By.xpath("//div[contains(text(), 'Playlist 1')]"));
+        WebElement playlistDeletedMessage = driver.findElement(By.xpath("//div[contains(@class, 'success')]"));
         Assert.assertTrue(playlistDeletedMessage.isDisplayed());
 
 

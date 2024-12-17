@@ -47,6 +47,16 @@ public class PlaylistTests extends BaseTest {
         Assert.assertTrue(homePage.nameField.isDisplayed());
 
     }
+    @Test
+    public void createPlaylistWithSpaceName()  {
+        String name = " ";
+        LoginPage loginPage = new LoginPage(getDriver());
+        HomePage homePage = new HomePage(getDriver());
+        loginPage.provideEmail("bohdan.ivasiv@testpro.io").providePassword("TkSDMvReT57X$ym").submitBtn();
+        homePage.plusButton().newPlaylistNameBtn().newPlaylistName(name);
+        Assert.assertTrue(homePage.nameField.isDisplayed());
+
+    }
 
 
 

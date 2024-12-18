@@ -27,4 +27,10 @@ public class LoginPage extends BasePage {
         click(submitBtn);
         return this;
     }
+
+    /*
+    public LoginPage LoginPage getActualUrl(){
+        driver.getCurrentUrl();
+        return this;
+    }*/
 }

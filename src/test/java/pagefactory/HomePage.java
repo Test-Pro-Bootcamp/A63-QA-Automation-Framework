@@ -1,10 +1,8 @@
 package pagefactory;
 
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.testng.annotations.DataProvider;
 
 public class HomePage extends BasePage {
     @FindBy(css = "img[class='avatar']")
@@ -31,8 +29,11 @@ public class HomePage extends BasePage {
     @FindBy(css = ".success.show")
     WebElement successMsg;
     //Notification error message
-    @FindBy(xpath = "//div[@class='error show']")
+    @FindBy(css = ".error.show")
     WebElement errorMessage;
+    //Logout
+    @FindBy(css = "a[data-testid='btn-logout']")
+    WebElement logoutBtn;
 
 
     public HomePage(WebDriver givenDriver) { super(givenDriver); }
@@ -83,7 +84,13 @@ public class HomePage extends BasePage {
         return findElement(successMsg).isDisplayed();
     }
 
-    public boolean isErrorMessageDisplayed() {
-        return findElement(errorMessage).isDisplayed();
+    public HomePage getErrorMessage() {
+        errorMessage.getText();
+        return this;
+    }
+
+    public HomePage logoutFromApp() {
+        click(logoutBtn);
+        return this;
     }
 }

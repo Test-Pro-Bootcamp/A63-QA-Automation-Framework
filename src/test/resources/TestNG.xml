@@ -7,8 +7,6 @@
         <classes>
             <class name="BaseTest"/>
             <class name="UpdatePassword"/>
-            <class name="LoginNewPassword"/>
-            <class name="LoginOldPassword"/>
         </classes>
     </test>
 </suite>

@@ -18,9 +18,7 @@ public class BaseTest {
     public static String url = null;
     public static WebDriverWait wait = null;
     public static Actions actions = null;
-    public String newPlaylistName = "Sample Edited Playlist";
-    public String currentPassword;
-
+    public String errorMessageUpdatePassword = "The new password must be at least 10 characters.";
     @BeforeSuite
     static void setupClass() {
         WebDriverManager.chromedriver().setup();

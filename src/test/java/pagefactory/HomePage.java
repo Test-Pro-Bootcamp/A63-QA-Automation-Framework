@@ -29,7 +29,7 @@ public class HomePage extends BasePage {
     @FindBy(css = ".success.show")
     WebElement successMsg;
     //Notification error message
-    @FindBy(css = ".error.show")
+    @FindBy(css = ".error")
     WebElement errorMessage;
     //Logout
     @FindBy(css = "a[data-testid='btn-logout']")
@@ -84,9 +84,8 @@ public class HomePage extends BasePage {
         return findElement(successMsg).isDisplayed();
     }
 
-    public HomePage getErrorMessage() {
-        errorMessage.getText();
-        return this;
+    public String getErrorMessage() {
+        return findElement(errorMessage).getText();
     }
 
     public HomePage logoutFromApp() {

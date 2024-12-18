@@ -19,6 +19,7 @@ public class BaseTest {
     public static WebDriverWait wait = null;
     public static Actions actions = null;
     public String errorMessageUpdatePassword = "The new password must be at least 10 characters.";
+    public String homePageAddress ="https://qa.koel.app/#!/profile";
     @BeforeSuite
     static void setupClass() {
         WebDriverManager.chromedriver().setup();

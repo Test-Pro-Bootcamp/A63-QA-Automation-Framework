@@ -12,18 +12,18 @@ public class BasePage {
     WebDriver pageDriver = null;
 
 
-    public BasePage(WebDriver existDriver){
+    public BasePage(WebDriver existDriver) {
         this.pageDriver = existDriver;
     }
 
-public WebElement findElement(By locator) {
-    return pageDriver.findElement(locator);
+    public  WebElement findElement(By locator) {
+        return pageDriver.findElement(locator);
 
     }
 
 
-//    public WebElement waitAndFindWebElement(WebDriver wait, By locator) {
-//        return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
-//    }
-//
+    public WebElement waitAndFindWebElement(WebDriver wait, By locator) {
+        return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+    }
+
 }

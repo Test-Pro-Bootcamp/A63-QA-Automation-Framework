@@ -1,3 +1,4 @@
+import org.example.LoginPage;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -11,11 +12,15 @@ import java.util.List;
 import static org.bouncycastle.oer.its.template.ieee1609dot2.basetypes.Ieee1609Dot2BaseTypes.Duration;
 
 public class DeletePlaylistTest extends BaseTest {
+
+    LoginPage loginPage = null;
+
+
     @Test
     public void deletePlaylist() throws InterruptedException {
         String testPlaylistName = "Playlist 1";
-        login("nazar@testpro.io", "Pomidor2115");
-        WebElement newPlaylist = wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("[data-testid='sidebar-create-playlist-btn']")));
+        loginPage = new LoginPage(driver);
+        loginPage.login("nazar@testpro.io", "Pomidor2115");
         Thread.sleep(1000);
         actions.moveToElement(newPlaylist).click().perform();
         newPlaylist.click();

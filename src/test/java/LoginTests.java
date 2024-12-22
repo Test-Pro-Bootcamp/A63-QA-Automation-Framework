@@ -1,3 +1,4 @@
+import org.example.HomePage;
 import org.example.LoginPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -19,14 +20,14 @@ public class LoginTests extends BaseTest {
     public void loginTest() {
         loginPage = new LoginPage(driver);
         loginPage.login("nazar@testpro.io", "Pomidor2115");
-        WebElement avatar = driver.findElement(By.cssSelector("#userBadge img"));
-        Assert.assertTrue(avatar.isDisplayed()); //true
+        HomePage homePage = new HomePage(driver);
+        Assert.assertTrue(homePage.getAvatar().isDisplayed()); //true
     }
 
     @Test(groups = "Regression", dataProvider = "incorrectCredentials")
     public void loginWithEmptyCredentials(String email, String password) {
         loginPage = new LoginPage(driver);
         loginPage.login(email, password);
-        Assert.assertTrue(LoginPage.getLogo().isDisplayed());
+        Assert.assertTrue(loginPage.getLogo().isDisplayed());
     }
 }

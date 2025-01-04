@@ -1,3 +1,4 @@
+import org.example.HomePage;
 import org.example.LoginPage;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
@@ -15,27 +16,29 @@ public class DeletePlaylistTest extends BaseTest {
 
     LoginPage loginPage = null;
 
+    HomePage homePage = null;
+
 
     @Test
-    public void deletePlaylist() throws InterruptedException {
+    public void deletePlaylist() {
         String testPlaylistName = "Playlist 1";
         loginPage = new LoginPage(driver);
         loginPage.login("nazar@testpro.io", "Pomidor2115");
-        Thread.sleep(1000);
-        actions.moveToElement(newPlaylist).click().perform();
-        newPlaylist.click();
-        WebElement simplePlaylist = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("[data-testid='playlist-context-menu-create-simple']")));
-        simplePlaylist.click();
-        WebElement playlistName = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#playlists > form > input[type=text]")));
-        playlistName.sendKeys(testPlaylistName);
-        playlistName.sendKeys(Keys.ENTER);
+        homePage = new HomePage(driver);
+        homePage.createPlaylist(actions, wait, testPlaylistName);
+        homePage.openPlaylist(wait, testPlaylistName);
+//        actions.moveToElement(homePage.getNewPlaylist()).click().perform();
+//        newPlaylist.click();
+//        WebElement simplePlaylist = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("[data-testid='playlist-context-menu-create-simple']")));
+//        simplePlaylist.click();
+//        WebElement playlistName = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#playlists > form > input[type=text]")));
+//        playlistName.sendKeys(testPlaylistName);
+//        playlistName.sendKeys(Keys.ENTER);
         WebElement createdPlaylistText = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("[class='success show']")));
         Assert.assertTrue(createdPlaylistText.isDisplayed());
-        WebElement findPlaylist = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//section[@id='playlists']//li//a[text()='Playlist 1']")));
-        Thread.sleep(1000);
-        findPlaylist.click();
+//        WebElement findPlaylist = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//section[@id='playlists']//li//a[text()='Playlist 1']")));
+//        findPlaylist.click();
         WebElement deletePlaylist = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("[class='del btn-delete-playlist']")));
-        Thread.sleep(1000);
         actions.moveToElement(deletePlaylist).click().perform();
 //        WebElement deletePlaylistConfirm = driver.findElement(By.cssSelector("[button.ok]"));
 //        deletePlaylistConfirm.click();

@@ -5,7 +5,6 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class HomePage extends BasePage{
@@ -16,7 +15,7 @@ public class HomePage extends BasePage{
 
     By simplePlaylist = By.cssSelector("[data-testid='playlist-context-menu-create-simple']");
 
-    By playlistName = By.cssSelector("#playlists > form > input[type=text]");
+    By playlistNameInput = By.cssSelector("#playlists > form > input[type=text]");
 
 
 
@@ -45,7 +44,7 @@ public class HomePage extends BasePage{
 
 
     public WebElement getPlaylistNameInput(WebDriverWait wait){
-        return waitAndFindWebElement(wait, playlistName);
+        return waitAndFindWebElement(wait, playlistNameInput);
 
     }
 
@@ -58,9 +57,14 @@ public class HomePage extends BasePage{
 
     }
 
-    public void openPlaylist(WebDriverWait wait, String testPlaylistName) {
-        WebElement findPlaylist = waitAndFindWebElement(wait, By.xpath("//section[@id='playlists']//li//a[text()='Playlist 1']"));
-        findPlaylist.click();
+    public WebElement getPlaylistByName(String playlistName){
+        return findElement(By.xpath(String.format("//section[@id='playlists']//li//a[text()='%s']", playlistName)));
+
+
+    }
+
+    public void openPlaylist(String testPlaylistName) {
+        getPlaylistByName(testPlaylistName).click();
     }
 
 

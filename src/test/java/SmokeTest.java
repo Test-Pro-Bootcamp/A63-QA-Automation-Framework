@@ -22,10 +22,15 @@ public class SmokeTest extends BaseTest{
     public void playSong (){
         LoginPage loginPage = new LoginPage(driver);
         HomePage homePage = new HomePage(driver);
+
         navigateToPage();
         loginPage.provideEmail("natalia.kalinina@testpro.io");
         loginPage.providePassword("nkKoel24$");
         loginPage.clickSubmit();
+        homePage.hoverOverNextSongButton();
+        homePage.clickNextSongButton();
         homePage.clickPlayButton();
+        homePage.validateSongIsPlaying();
+       // homePage.hoverOverNextSongButton();
     }
 }

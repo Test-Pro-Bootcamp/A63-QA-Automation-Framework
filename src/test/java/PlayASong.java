@@ -2,7 +2,7 @@ import org.testng.annotations.Test;
 import pom.HomePage;
 import pom.LoginPage;
 
-public class Homework18 extends BaseTest{
+public class PlayASong extends BaseTest{
 
     @Test
     public void playSong() {

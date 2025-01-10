@@ -2,7 +2,7 @@ import org.testng.annotations.Test;
 import pagefactory.HomePage;
 import pagefactory.LoginPage;
 
-public class Homework19 extends BaseTest  {
+public class RemovePlayList extends BaseTest  {
 
     @Test
     public void removePlaylist() {

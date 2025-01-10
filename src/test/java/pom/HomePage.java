@@ -24,6 +24,8 @@ public class HomePage extends BasePage {
     By deleteButton = By.cssSelector(".del.btn-delete-playlist");
     By deleteNotification = By.cssSelector(".alertify-logs.top.right");
 
+
+    public boolean avatarIconDisplayed () {findElement(userAvatarIcon).isDisplayed();return true;}
     public void hoverOverNextSongButton() {actions.moveToElement(findElement(playBtn)).perform();}
     public void clickNextSongButton() {findElement(nextSongBtn).click();}
     public void clickPlayButton(){findElement(playBth).click();}

@@ -7,9 +7,10 @@
 
     <test name="Smoke Test" preserve-order="false">
         <classes>
-            <class name="PlayASong">
+            <class name="SmokeTest">
                 <methods>
-                    <include name="validateSongIsPlaying"/>
+                    <include name="loginValidCredentials"/>
+                    <include name="playSong"/>
 
                 </methods>
             </class>

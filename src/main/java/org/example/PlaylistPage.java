@@ -16,7 +16,7 @@ public class PlaylistPage extends BasePage{
     }
 
     public WebElement getDeletePlaylistButton(WebDriverWait wait){
-        return waitAndFindWebElement(wait, deletePlaylist);
+        return waitAndFindWebElement(deletePlaylist);
 
     }
 

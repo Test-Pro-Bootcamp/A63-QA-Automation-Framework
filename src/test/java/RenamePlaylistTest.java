@@ -24,12 +24,11 @@ public class RenamePlaylistTest extends BaseTest{
         loginPage = new LoginPage(driver);
         loginPage.login("nazar@testpro.io", "Pomidor2115");
         homePage = new HomePage(driver);
-
-        actions.contextClick(homePage.getPlayListByName(currentPlaylistName)).perform();
-        Thread.sleep(1000);
+        homePage.renamePlaylist(currentPlaylistName, newPlaylistName);
 
 
-        Assert.assertEquals(newPlaylistName, playlist.getText());
+        Assert.assertEquals(newPlaylistName, homePage.getPlaylistByName(newPlaylistName).getText());
+        Assert.assertTrue(homePage.getPlaylistByName(newPlaylistName).isDisplayed());
 
 
         playlist = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(String.format("//section[@id='playlists']//li//a[text()='%s']", newPlaylistName))));

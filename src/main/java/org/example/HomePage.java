@@ -20,6 +20,14 @@ public class HomePage extends BasePage {
 
     String playlistLocator = "//section[@id='playlists']//li//a[text()='%s']";
 
+    By editButtonLocator = By.xpath("//li[contains(@data-testid, 'playlist-context-menu-edit')]");
+
+    By renamePlaylistInputLocator = By.cssSelector("[data-testid='inline-playlist-name-input']");
+
+
+
+
+
 
     public HomePage(WebDriver existDriver) {
         super(existDriver);
@@ -73,16 +81,18 @@ public class HomePage extends BasePage {
 
     }
 
-    public void renamePlaylist() {
-        WebElement editButton = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//li[contains(@data-testid, 'playlist-context-menu-edit')]")));
-        actions.moveToElement(editButton).click().perform();
-        WebElement inputFieldPlaylistName = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("[data-testid='inline-playlist-name-input']")));
+    public void renamePlaylist(String currentPlaylistName, String newPlaylistName) throws InterruptedException {
+        contextClickByElement(getPlayListByName(currentPlaylistName));
+        Thread.sleep(1000);
+        WebElement editButton = waitAndFindWebElement(editButtonLocator);
+        editButton.click();
+        WebElement renamePlaylistInput = waitAndFindWebElement(renamePlaylistInputLocator);
         for (int i = 0; i < currentPlaylistName.length(); i++) {
-            inputFieldPlaylistName.sendKeys(Keys.BACK_SPACE);
+            renamePlaylistInput.sendKeys(Keys.BACK_SPACE);
         }
-        inputFieldPlaylistName.sendKeys(newPlaylistName);
-        inputFieldPlaylistName.sendKeys(Keys.ENTER);
-        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[contains(@class,'success')]")));
+        renamePlaylistInput.sendKeys(newPlaylistName);
+        renamePlaylistInput.sendKeys(Keys.ENTER);
+        getSuccessMessage();
     }
 
 

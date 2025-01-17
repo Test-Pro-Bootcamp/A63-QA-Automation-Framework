@@ -15,6 +15,9 @@ public class BasePage {
 
     WebDriver pageDriver = null;
 
+    By successMessageLocator = By.xpath("//div[contains(@class,'success')]");
+
+
 
     public BasePage(WebDriver existDriver) {
         this.pageDriver = existDriver;
@@ -34,7 +37,13 @@ public class BasePage {
 
     public void contextClickByElement(WebElement element)  {
         Actions actions = new Actions(pageDriver);
-        actions.contextClick(element);
+        actions.contextClick(element).perform();
+
+    }
+
+
+    public WebElement getSuccessMessage() {
+        return waitAndFindWebElement(successMessageLocator);
 
     }
 

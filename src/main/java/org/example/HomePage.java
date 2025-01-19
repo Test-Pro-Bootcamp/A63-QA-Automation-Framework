@@ -6,7 +6,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.List;
 
@@ -14,20 +13,19 @@ public class HomePage extends BasePage {
 
     By avatar = By.cssSelector("#userBadge img");
 
-    By newPlaylist = By.cssSelector("[data-testid='sidebar-create-playlist-btn']");
+    By addPlaylistButton = By.cssSelector("[data-testid='sidebar-create-playlist-btn']");
 
-    By simplePlaylist = By.cssSelector("[data-testid='playlist-context-menu-create-simple']");
+    By createPlaylist = By.cssSelector("[data-testid='playlist-context-menu-create-simple']");
 
     By playlistNameInput = By.cssSelector("#playlists > form > input[type=text]");
 
-    String playlistLocator = "//section[@id='playlists']//li//a[text()='%s']";
+    String playListLocator = "//section[@id='playlists']//li//a[text()='%s']";
 
     By editButtonLocator = By.xpath("//li[contains(@data-testid, 'playlist-context-menu-edit')]");
 
     By renamePlaylistInputLocator = By.cssSelector("[data-testid='inline-playlist-name-input']");
 
     By playLists = By.cssSelector("#playlists li");
-
 
 
 
@@ -43,30 +41,31 @@ public class HomePage extends BasePage {
         return findElement(avatar);
     }
 
-    public WebElement getNewPlaylist(WebDriverWait wait) {
-        return waitAndFindWebElement(newPlaylist);
+
+    public WebElement getAddPlaylistButton() {
+        return waitAndFindWebElement(addPlaylistButton);
 
 
     }
 
 
-    public WebElement getCreatePlaylistButton(WebDriverWait wait) {
-        return waitAndFindWebElement(simplePlaylist);
+    public WebElement getCreatePlaylistButton() {
+        return waitAndFindWebElement(createPlaylist);
 
     }
 
 
-    public WebElement getPlaylistNameInput(WebDriverWait wait) {
+    public WebElement getPlaylistNameInput() {
         return waitAndFindWebElement(playlistNameInput);
 
     }
 
-    public void createPlaylist(Actions actions, WebDriverWait wait, String testPlaylistName) {
-        actions.moveToElement(getNewPlaylist(wait)).perform();
-        getNewPlaylist(wait).click();
-        getCreatePlaylistButton(wait).click();
-        getPlaylistNameInput(wait).sendKeys(testPlaylistName);
-        getPlaylistNameInput(wait).sendKeys(Keys.ENTER);
+    public void createPlaylist(Actions actions, String testPlaylistName) {
+        actions.moveToElement(getAddPlaylistButton()).perform();
+        getAddPlaylistButton().click();
+        getCreatePlaylistButton().click();
+        getPlaylistNameInput().sendKeys(testPlaylistName);
+        getPlaylistNameInput().sendKeys(Keys.ENTER);
 
     }
 
@@ -82,7 +81,7 @@ public class HomePage extends BasePage {
 
 
     public WebElement getPlayListByName(String PlayListName) {
-        return waitAndFindWebElement(By.xpath(String.format(playlistLocator, PlayListName)));
+        return waitAndFindWebElement(By.xpath(String.format(playListLocator, PlayListName)));
 
     }
 
@@ -105,6 +104,18 @@ public class HomePage extends BasePage {
     public List<WebElement> getAllPlaylists() {
         return findElements(playLists);
 
+    }
+
+
+
+    public void createPlayList(String playListName) throws InterruptedException {
+        Thread.sleep(1000);
+        getAddPlaylistButton().click();
+        getCreatePlaylistButton().click();
+        getPlaylistNameInput().sendKeys(playListName);
+        getPlaylistNameInput().sendKeys(Keys.ENTER);
+        getSuccessMessage();
+        waitUntilSuccessMessageIsDisappeared();
     }
 
 }

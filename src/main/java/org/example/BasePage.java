@@ -54,4 +54,8 @@ public abstract class BasePage {
 
     }
 
+
+    public void waitUntilSuccessMessageIsDisappeared() {
+        WaitUtils.waitUntilInvisibilityOfElementLocatedBy(pageDriver, successMessageLocator);
+    }
 }

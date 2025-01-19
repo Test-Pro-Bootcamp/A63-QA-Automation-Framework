@@ -28,7 +28,7 @@ public class DeletePlaylistTest extends BaseTest {
         loginPage.login("nazar@testpro.io", "Pomidor2115");
         homePage = new HomePage(driver);
 
-        homePage.createPlaylist(actions, wait, PlaylistName);
+        homePage.createPlaylist(actions, PlaylistName);
         homePage.openPlaylist(PlaylistName);
         PlaylistPage playlistPage = new PlaylistPage(driver);
         playlistPage.deletePlaylist(wait);
@@ -43,20 +43,9 @@ public class DeletePlaylistTest extends BaseTest {
         loginPage = new LoginPage(driver);
         loginPage.login("nazar@testpro.io", "Pomidor2115");
         homePage = new HomePage(driver);
-
-        int previousSize = playLists.size();
-        WebElement newPlaylist = wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("[data-testid='sidebar-create-playlist-btn']")));
-        Thread.sleep(1000);
-        actions.moveToElement(newPlaylist).click().perform();
-        newPlaylist.click();
-        WebElement simplePlaylist = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("[data-testid='playlist-context-menu-create-simple']")));
-        simplePlaylist.click();
-        WebElement playlistName = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#playlists > form > input[type=text]")));
-        playlistName.sendKeys(PlaylistName);
-        playlistName.sendKeys(Keys.ENTER);
-        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[contains(@class, 'success')]")));
-        playLists = driver.findElements(By.cssSelector("#playlists li"));
-        int actualSize = playLists.size();
+        int previousSize = homePage.getAllPlaylists().size();
+        homePage.createPlayList(PlaylistName);
+        int actualSize = homePage.getAllPlaylists().size();
         Assert.assertNotEquals(actualSize, previousSize);
     }
 }

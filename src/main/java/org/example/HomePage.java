@@ -8,6 +8,8 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.util.List;
+
 public class HomePage extends BasePage {
 
     By avatar = By.cssSelector("#userBadge img");
@@ -23,6 +25,9 @@ public class HomePage extends BasePage {
     By editButtonLocator = By.xpath("//li[contains(@data-testid, 'playlist-context-menu-edit')]");
 
     By renamePlaylistInputLocator = By.cssSelector("[data-testid='inline-playlist-name-input']");
+
+    By playLists = By.cssSelector("#playlists li");
+
 
 
 
@@ -96,5 +101,10 @@ public class HomePage extends BasePage {
     }
 
 
+
+    public List<WebElement> getAllPlaylists() {
+        return findElements(playLists);
+
+    }
 
 }

@@ -43,7 +43,7 @@ public class DeletePlaylistTest extends BaseTest {
         loginPage = new LoginPage(driver);
         loginPage.login("nazar@testpro.io", "Pomidor2115");
         homePage = new HomePage(driver);
-        List<WebElement> playLists = driver.findElements(By.cssSelector("#playlists li"));
+
         int previousSize = playLists.size();
         WebElement newPlaylist = wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("[data-testid='sidebar-create-playlist-btn']")));
         Thread.sleep(1000);

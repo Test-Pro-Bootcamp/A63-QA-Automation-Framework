@@ -9,9 +9,10 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
+import java.util.List;
 
 
-public class BasePage {
+public abstract class BasePage {
 
     WebDriver pageDriver = null;
 
@@ -25,6 +26,12 @@ public class BasePage {
 
     public  WebElement findElement(By locator) {
         return pageDriver.findElement(locator);
+
+    }
+
+    public List<WebElement> findElements(By locator) {
+        return pageDriver.findElements(locator);
+
 
     }
 

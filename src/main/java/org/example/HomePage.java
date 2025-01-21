@@ -5,7 +5,6 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.util.List;
 
@@ -38,7 +37,7 @@ public class HomePage extends BasePage {
 
 
     public WebElement getAvatar() {
-        return findElement(avatar);
+        return waitAndFindWebElement(avatar);
     }
 
 
@@ -60,9 +59,11 @@ public class HomePage extends BasePage {
 
     }
 
-    public void createPlaylist(Actions actions, String testPlaylistName) {
+    public void createPlaylist(Actions actions, String testPlaylistName) throws InterruptedException {
         actions.moveToElement(getAddPlaylistButton()).perform();
+        Thread.sleep(1000);
         getAddPlaylistButton().click();
+        Thread.sleep(1000);
         getCreatePlaylistButton().click();
         getPlaylistNameInput().sendKeys(testPlaylistName);
         getPlaylistNameInput().sendKeys(Keys.ENTER);
@@ -108,13 +109,12 @@ public class HomePage extends BasePage {
 
 
 
-    public void createPlayList(String playListName) throws InterruptedException {
+    public void createPlaylist(String playListName) throws InterruptedException {
         Thread.sleep(1000);
         getAddPlaylistButton().click();
         getCreatePlaylistButton().click();
         getPlaylistNameInput().sendKeys(playListName);
         getPlaylistNameInput().sendKeys(Keys.ENTER);
-        getSuccessMessage();
         waitUntilSuccessMessageIsDisappeared();
     }
 

@@ -2,16 +2,9 @@ import org.example.HomePage;
 import org.example.LoginPage;
 import org.example.PlaylistPage;
 import org.openqa.selenium.*;
-import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import java.time.Duration;
-import java.util.List;
-
-import static org.bouncycastle.oer.its.template.ieee1609dot2.basetypes.Ieee1609Dot2BaseTypes.Duration;
 import static org.example.WaitUtils.waitUntilVisibilityOfElementLocatedBy;
 
 public class DeletePlaylistTest extends BaseTest {
@@ -22,12 +15,11 @@ public class DeletePlaylistTest extends BaseTest {
 
 
     @Test
-    public void deletePlaylist() {
+    public void deletePlaylist() throws InterruptedException {
         String PlaylistName = "PlaylistForDeleting";
         loginPage = new LoginPage(driver);
         loginPage.login("nazar@testpro.io", "Pomidor2115");
         homePage = new HomePage(driver);
-
         homePage.createPlaylist(actions, PlaylistName);
         homePage.openPlaylist(PlaylistName);
         PlaylistPage playlistPage = new PlaylistPage(driver);
@@ -44,8 +36,9 @@ public class DeletePlaylistTest extends BaseTest {
         loginPage.login("nazar@testpro.io", "Pomidor2115");
         homePage = new HomePage(driver);
         int previousSize = homePage.getAllPlaylists().size();
-        homePage.createPlayList(PlaylistName);
+        homePage.createPlaylist(PlaylistName);
         int actualSize = homePage.getAllPlaylists().size();
         Assert.assertNotEquals(actualSize, previousSize);
     }
 }
+

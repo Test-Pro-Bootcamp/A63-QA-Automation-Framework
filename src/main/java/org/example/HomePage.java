@@ -31,10 +31,10 @@ public class HomePage extends BasePage {
     WebElement editButton;
 
     @FindBy(css = "[data-testid='inline-playlist-name-input']")
-    WebElement renamePlaylistInputLocator;
+    WebElement renamePlaylistInput;
 
     @FindBy(css = "#playlists li")
-    WebElement playLists;
+    List<WebElement> playLists;
 
 
 
@@ -99,9 +99,8 @@ public class HomePage extends BasePage {
     public void renamePlaylist(String currentPlaylistName, String newPlaylistName) throws InterruptedException {
         contextClickByElement(getPlayListByName(currentPlaylistName));
         Thread.sleep(1000);
-        WebElement editButton = waitAndFindWebElement(this.editButton);
         editButton.click();
-        WebElement renamePlaylistInput = waitAndFindWebElement(renamePlaylistInputLocator);
+
         for (int i = 0; i < currentPlaylistName.length(); i++) {
             renamePlaylistInput.sendKeys(Keys.BACK_SPACE);
         }
@@ -113,7 +112,7 @@ public class HomePage extends BasePage {
 
 
     public List<WebElement> getAllPlaylists() {
-        return findElements(playLists);
+        return playLists;
 
     }
 

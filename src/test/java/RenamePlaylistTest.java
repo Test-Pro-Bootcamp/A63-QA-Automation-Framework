@@ -16,7 +16,7 @@ public class RenamePlaylistTest extends BaseTest{
 
 
 
-    String currentPlaylistName = "TestPro Playlist";
+    String currentPlaylistName = "Playlist 1";
     String newPlaylistName = "New Playlist";
 
     @Test
@@ -24,6 +24,7 @@ public class RenamePlaylistTest extends BaseTest{
 
         loginPage = new LoginPage(driver);
         loginPage.login("nazar@testpro.io", "Pomidor2115");
+        Thread.sleep(2000);
         homePage = new HomePage(driver);
         homePage.renamePlaylist(currentPlaylistName, newPlaylistName);
 

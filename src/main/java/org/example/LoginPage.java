@@ -22,11 +22,26 @@ public class LoginPage extends BasePage {
 
 
     public void login(String email, String password){
-        findElement(emailInput).sendKeys(email);
-        findElement(passwordInput).sendKeys(password);
-        findElement(loginButton).click();
+        provideEmail(email).providePassword(password).clickSubmit();
 
     }
+
+    private LoginPage provideEmail(String email){
+        findElement(emailInput).sendKeys(email);
+        return this;
+    }
+
+    private LoginPage providePassword(String password) {
+        findElement(passwordInput).sendKeys(password);
+        return this;
+    }
+
+    private void clickSubmit(){
+        findElement(loginButton).click();
+    }
+
+
+
 
     public WebElement getLogo() {
 

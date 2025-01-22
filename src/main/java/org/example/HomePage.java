@@ -26,8 +26,9 @@ public class HomePage extends BasePage {
 
     String playListLocator = "//section[@id='playlists']//li//a[text()='%s']";
 
-    @FindBy
-    By editButton = By.xpath("//li[contains(@data-testid, 'playlist-context-menu-edit')]");
+
+    @FindBy(xpath = "//li[contains(@data-testid, 'playlist-context-menu-edit')]")
+    WebElement editButton;
 
     @FindBy(css = "[data-testid='inline-playlist-name-input']")
     WebElement renamePlaylistInputLocator;

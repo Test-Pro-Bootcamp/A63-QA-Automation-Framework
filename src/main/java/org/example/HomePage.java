@@ -5,21 +5,28 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.FindBy;
 
 import java.util.List;
 
 public class HomePage extends BasePage {
 
-    By avatar = By.cssSelector("#userBadge img");
 
-    By addPlaylistButton = By.cssSelector("[data-testid='sidebar-create-playlist-btn']");
+    @FindBy(css = "#userBadge img")
+    WebElement avatar;
 
-    By createPlaylist = By.cssSelector("[data-testid='playlist-context-menu-create-simple']");
+    @FindBy(css = "[data-testid='sidebar-create-playlist-btn']")
+    WebElement addPlaylistButton;
 
-    By playlistNameInput = By.cssSelector("#playlists > form > input[type=text]");
+    @FindBy(css = "[data-testid='playlist-context-menu-create-simple']")
+    WebElement createPlaylist;
+
+    @FindBy(css = "#playlists > form > input[type=text]")
+    WebElement playlistNameInput;
 
     String playListLocator = "//section[@id='playlists']//li//a[text()='%s']";
 
+    @FindBy
     By editButtonLocator = By.xpath("//li[contains(@data-testid, 'playlist-context-menu-edit')]");
 
     By renamePlaylistInputLocator = By.cssSelector("[data-testid='inline-playlist-name-input']");
@@ -37,7 +44,7 @@ public class HomePage extends BasePage {
 
 
     public WebElement getAvatar() {
-        return waitAndFindWebElement(avatar);
+        return avatar;
     }
 
 

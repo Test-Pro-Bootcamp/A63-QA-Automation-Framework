@@ -27,7 +27,7 @@ public class HomePage extends BasePage {
     String playListLocator = "//section[@id='playlists']//li//a[text()='%s']";
 
     @FindBy
-    By editButtonLocator = By.xpath("//li[contains(@data-testid, 'playlist-context-menu-edit')]");
+    By editButton = By.xpath("//li[contains(@data-testid, 'playlist-context-menu-edit')]");
 
     @FindBy(css = "[data-testid='inline-playlist-name-input']")
     WebElement renamePlaylistInputLocator;
@@ -51,20 +51,20 @@ public class HomePage extends BasePage {
 
 
     public WebElement getAddPlaylistButton() {
-        return waitAndFindWebElement(addPlaylistButton);
+        return addPlaylistButton;
 
 
     }
 
 
     public WebElement getCreatePlaylistButton() {
-        return waitAndFindWebElement(createPlaylist);
+        return createPlaylist;
 
     }
 
 
     public WebElement getPlaylistNameInput() {
-        return waitAndFindWebElement(playlistNameInput);
+        return playlistNameInput;
 
     }
 
@@ -98,7 +98,7 @@ public class HomePage extends BasePage {
     public void renamePlaylist(String currentPlaylistName, String newPlaylistName) throws InterruptedException {
         contextClickByElement(getPlayListByName(currentPlaylistName));
         Thread.sleep(1000);
-        WebElement editButton = waitAndFindWebElement(editButtonLocator);
+        WebElement editButton = waitAndFindWebElement(this.editButton);
         editButton.click();
         WebElement renamePlaylistInput = waitAndFindWebElement(renamePlaylistInputLocator);
         for (int i = 0; i < currentPlaylistName.length(); i++) {

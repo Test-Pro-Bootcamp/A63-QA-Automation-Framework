@@ -33,7 +33,7 @@ public class BaseTest {
 
     @BeforeMethod
     @Parameters({"BaseUrl"})
-    public void launchBrowser(String BaseURL)  throws MalformedURLException {
+    public void launchBrowser(String BaseURL) throws MalformedURLException {
         driver = pickBrowser(System.getProperty("browser"));
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         driver.manage().window().maximize();
@@ -43,13 +43,20 @@ public class BaseTest {
         url = BaseURL;
         navigateToPage();
     }
+
     @AfterMethod
-    public void navigateToPage() {driver.get(url);}
-    public void closeBrowser() {driver.quit();}
-    public static WebDriver pickBrowser(String browser) throws MalformedURLException{
+    public void navigateToPage() {
+        driver.get(url);
+    }
+
+    public void closeBrowser() {
+        driver.quit();
+    }
+
+    public static WebDriver pickBrowser(String browser) throws MalformedURLException {
         DesiredCapabilities caps = new DesiredCapabilities();
         String gridURL = "http://10.0.0.213:4444";
-        switch (browser){
+        switch (browser) {
             case "firefox":
                 WebDriverManager.firefoxdriver().setup();
                 return driver = new FirefoxDriver();
@@ -62,11 +69,11 @@ public class BaseTest {
                 WebDriverManager.safaridriver().setup();
                 return driver = new SafariDriver();
             case "grid-edge":
-                caps.setCapability("browser name","MicrosoftEdge");
+                caps.setCapability("browser name", "MicrosoftEdge");
                 return driver = new RemoteWebDriver(URI.create(gridURL).toURL(), caps);
             case "grid-chrome":
                 caps.setCapability("browser name", "chrome");
-                return driver = new RemoteWebDriver(URI.create(gridURL).toURL(),caps);
+                return driver = new RemoteWebDriver(URI.create(gridURL).toURL(), caps);
             default:
                 WebDriverManager.chromedriver().setup();
                 ChromeOptions chromeOptions = new ChromeOptions();
@@ -77,14 +84,5 @@ public class BaseTest {
     }
 
 
-
-
-
-
-
-
-<<<<<<< Updated upstream
 }
-=======
-}
->>>>>>> Stashed changes
+

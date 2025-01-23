@@ -2,17 +2,18 @@ package org.example;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 
 public class LoginPage extends BasePage {
 
-
-    By emailInput = By.cssSelector("[type='email']");
-
-    By passwordInput = By.cssSelector("[type='password']");
-
-    By loginButton = By.cssSelector("[type='submit']");
-
-    By logo = By.cssSelector("[class=logo]");
+    @FindBy(css = "[type='email']")
+    WebElement emailInput;
+    @FindBy(css = "[type='password']")
+    WebElement passwordInput;
+    @FindBy(css = "[type='submit']")
+    WebElement loginButton;
+    @FindBy(css = "[class=logo]")
+    WebElement logo;
 
 
 
@@ -27,17 +28,17 @@ public class LoginPage extends BasePage {
     }
 
     private LoginPage provideEmail(String email){
-        findElement(emailInput).sendKeys(email);
+        emailInput.sendKeys(email);
         return this;
     }
 
     private LoginPage providePassword(String password) {
-        findElement(passwordInput).sendKeys(password);
+        passwordInput.sendKeys(password);
         return this;
     }
 
     private void clickSubmit(){
-        findElement(loginButton).click();
+        loginButton.click();
     }
 
 
@@ -45,7 +46,7 @@ public class LoginPage extends BasePage {
 
     public WebElement getLogo() {
 
-        return findElement(logo);
+        return logo;
 
 
     }

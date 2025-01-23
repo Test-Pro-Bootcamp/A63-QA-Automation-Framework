@@ -3,12 +3,15 @@ package org.example;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 
 import java.util.List;
 
 public class ProfilePage extends BasePage {
 
-    By themes = By.xpath("//div[contains(@data-testid, 'theme-card')]");
+
+    @FindBy(xpath = "//div[contains(@data-testid, 'theme-card')]")
+    List<WebElement> themes;
 
 
     public ProfilePage(WebDriver existDriver) {
@@ -16,7 +19,7 @@ public class ProfilePage extends BasePage {
     }
 
     public List<WebElement> getAllThemes() {
-        return findElements(themes);
+        return themes;
 
     }
 

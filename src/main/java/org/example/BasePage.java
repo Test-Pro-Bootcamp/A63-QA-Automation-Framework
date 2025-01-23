@@ -5,6 +5,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -17,7 +18,9 @@ public abstract class BasePage {
 
     WebDriver pageDriver = null;
 
-    By successMessageLocator = By.xpath("//div[contains(@class,'success')]");
+
+    @FindBy(xpath = "//div[contains(@class,'success')]")
+    WebElement successMessageLocator;
 
 
 
@@ -53,7 +56,7 @@ public abstract class BasePage {
 
 
     public WebElement getSuccessMessage() {
-        return waitAndFindWebElement(successMessageLocator);
+        return successMessageLocator;
 
     }
 

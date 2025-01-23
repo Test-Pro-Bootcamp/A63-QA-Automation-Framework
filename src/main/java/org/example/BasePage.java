@@ -35,11 +35,6 @@ public abstract class BasePage {
 
     }
 
-    public List<WebElement> findElements(By locator) {
-        return pageDriver.findElements(locator);
-
-
-    }
 
 
     public WebElement waitAndFindWebElement(By locator) {
@@ -62,6 +57,6 @@ public abstract class BasePage {
 
 
     public void waitUntilSuccessMessageIsDisappeared() {
-        WaitUtils.waitUntilInvisibilityOfElementLocatedBy(pageDriver, successMessageLocator);
+        WaitUtils.waitUntilInvisibilityOfElement(pageDriver, getSuccessMessage());
     }
 }

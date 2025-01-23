@@ -11,6 +11,7 @@ public class LoginTests extends BaseTest {
         HomePage homePage = new HomePage(getDriver());
         loginPage.provideEmail("bohdan.ivasiv@testpro.io").providePassword("TkSDMvReT57X$ym").submitBtn();
         Assert.assertTrue(homePage.getAvatarIcon().isDisplayed());
+        
 
     }
     @Test

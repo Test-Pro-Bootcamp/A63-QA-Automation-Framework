@@ -4,7 +4,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class HomePage extends BasePage {
 
@@ -23,8 +22,12 @@ public class HomePage extends BasePage {
     By playList = By.linkText("NK_PL2");
     By deleteButton = By.cssSelector(".del.btn-delete-playlist");
     By deleteNotification = By.cssSelector(".alertify-logs.top.right");
+    By albumsButton = By.xpath("//*[@id=\"sidebar\"]/section[1]/ul/li[4]/a\n");
+    By albumCover = By.xpath("//*[@id=\"albumsWrapper\"]/div/article[1]");
 
+    public void hoverOverAlbum() {actions.moveToElement(findElement(albumCover)).perform();}
 
+    public void clickAlbumsButton() {findElement(albumsButton).click();}
     public boolean avatarIconDisplayed () {findElement(userAvatarIcon).isDisplayed();return true;}
     public void hoverOverNextSongButton() {actions.moveToElement(findElement(playBtn)).perform();}
     public void clickNextSongButton() {findElement(nextSongBtn).click();}

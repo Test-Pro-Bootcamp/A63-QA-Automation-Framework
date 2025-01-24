@@ -27,10 +27,20 @@ public class HomePage extends BasePage {
     By albumCover1 = By.xpath("//*[@id=\"albumsWrapper\"]/div/article[1]");
     By albumCover2 = By.xpath("//*[@id=\"albumsWrapper\"]/div/article[2]");
     By nameOnAlbum = By.cssSelector("#albumsWrapper > div > article:nth-child(1) > footer > div > a.name");
+    By imageURL = By.cssSelector("#albumsWrapper > div > article:nth-child(1) > span > span");
+    By artistName = By.xpath("//*[@id=\"albumsWrapper\"]/div/article[1]/footer/div/a[2]");
+    By songsCountInAlbum = By.xpath("//*[@id=\"albumsWrapper\"]/div/article[1]/footer/p/span[1]");
+    By shuffleButton = By.xpath("//*[@id=\"albumsWrapper\"]/div/article[1]/footer/p/span[2]/a[1]");
+    By downloadButton = By.xpath("//*[@id=\"albumsWrapper\"]/div/article[1]/footer/p/span[2]/a[2]");
 
+    public void getDownloadButton(){System.out.println("=== The download button present: " + findElement(downloadButton).getAttribute("title"));}
+    public void getShuffleButton(){System.out.println("=== The shuffle button present : " + findElement(shuffleButton).getAttribute("title"));}
+    public void getNumberOfSongs(){System.out.println("=== The number of songs in album is: " + findElement(songsCountInAlbum).getText());}
+    public void getArtistName(){System.out.println("=== The Artist name is: " + findElement(artistName).getText());}
+    // to get the image-URL I used .getAttribute , and in my case the attribute was the 'style' (not 'img')
+    public void getImageURL() {System.out.println("The image-URL of album is: " + findElement(imageURL).getAttribute("style"));}
     public void getNameOnAlbum() {
-        System.out.println("The name of album is: " + findElement(nameOnAlbum).getText());
-        //findElement(nameOnAlbum).getText();
+        System.out.println("The name of album is: " + findElement(nameOnAlbum).getText());//findElement(nameOnAlbum).getText();
     }
     public void hoverOverAlbum2() {actions.moveToElement(findElement(albumCover2));}
     public void hoverOverAlbum(){contextClick(albumCover1);}

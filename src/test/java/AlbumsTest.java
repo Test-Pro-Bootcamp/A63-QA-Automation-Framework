@@ -17,13 +17,12 @@ public class AlbumsTest extends BaseTest{
         Assert.assertTrue(homePage.getUserAvatar().isDisplayed());
         homePage.clickAlbumsButton();
         homePage.hoverOverAlbum2();
-        homePage.getNameOnAlbum();
-        // If Album cover is not existing standard Koel album cover should be present
-        //Album name should be displayed
-        //Artist name should be displayed
-        //Songs count should be displayed and reflect the actual number of songs in the album
-        //Shuffle icon should be present
-        //Download icon should be present
+        homePage.getNameOnAlbum(); //Album name should be displayed
+        homePage.getImageURL();// If Album cover is not existing standard Koel album cover should be present
+        homePage.getArtistName(); //Artist name should be displayed
+        homePage.getNumberOfSongs();//Songs count should be displayed and reflect the actual number of songs in the album
+        homePage.getShuffleButton();//Shuffle icon should be present
+        homePage.getDownloadButton();//Download icon should be present
     }
 
     @Test

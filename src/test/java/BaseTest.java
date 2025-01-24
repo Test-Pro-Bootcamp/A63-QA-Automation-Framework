@@ -111,7 +111,7 @@ public class BaseTest {
     @AfterMethod
     public void closeBrowser(){
 
-        driver.quit();
+       // driver.quit();
     }
 
     public static WebDriver lambdaTest() throws MalformedURLException {

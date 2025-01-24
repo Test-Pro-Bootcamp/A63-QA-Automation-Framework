@@ -29,4 +29,7 @@ public class BasePage {
     public void doubleClick(By locator){
         actions.doubleClick(findElement(locator)).perform();
     }
+    // to HOVER over element
+    //public void contextClick (WebElement webElement){ actions.contextClick(findElement(webElement)).perform();}
+    public void contextClick (By locator) {actions.contextClick(findElement(locator)).perform();}
 }

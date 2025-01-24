@@ -23,7 +23,19 @@ public class HomePage extends BasePage {
     By playList = By.linkText("NK_PL2");
     By deleteButton = By.cssSelector(".del.btn-delete-playlist");
     By deleteNotification = By.cssSelector(".alertify-logs.top.right");
+    By albumsButton = By.cssSelector("#sidebar a.albums");
+    By albumCover1 = By.xpath("//*[@id=\"albumsWrapper\"]/div/article[1]");
+    By albumCover2 = By.xpath("//*[@id=\"albumsWrapper\"]/div/article[2]");
+    By nameOnAlbum = By.cssSelector("#albumsWrapper > div > article:nth-child(1) > footer > div > a.name");
 
+    public void getNameOnAlbum() {
+        System.out.println("The name of album is: " + findElement(nameOnAlbum).getText());
+        //findElement(nameOnAlbum).getText();
+    }
+    public void hoverOverAlbum2() {actions.moveToElement(findElement(albumCover2));}
+    public void hoverOverAlbum(){contextClick(albumCover1);}
+    public void clickFirstAlbum(){findElement(albumCover2).click();}
+    public void clickAlbumsButton() {findElement(albumsButton).click();}
     public void hoverOverNextSongButton() {actions.moveToElement(findElement(playBtn)).perform();}
     public void clickNextSongButton() {findElement(nextSongBtn).click();}
     public void clickPlayButton(){findElement(playBth).click();}

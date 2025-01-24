@@ -17,6 +17,9 @@ public class AlbumsTest extends BaseTest{
         Assert.assertTrue(homePage.avatarIconDisplayed());
         homePage.clickAlbumsButton();
         homePage.hoverOverAlbum();
+        // ger image url
+        // get the album name
+        // ger artist name
     }
 
 

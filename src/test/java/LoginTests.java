@@ -10,7 +10,7 @@ public class LoginTests extends BaseTest {
         HomePage homePage = new HomePage(driver);
 
         loginPage.provideEmail("victoria.mereneanu@testpro.io")
-                .providePassword("Testpro1234$")
+                .providePassword("Testpro4321$")
                 .clickSubmit();
         Assert.assertTrue(homePage.isAvatarDisplayed());
 

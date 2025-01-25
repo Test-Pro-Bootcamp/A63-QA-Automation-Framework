@@ -17,6 +17,17 @@ dependencies {
 
 test {
     useTestNG() {
-        suites "src/test/resources/TestNG.xml"
+<<<<<<< Updated upstream
+        suites "src/test/resources/SmokeSuite.xml"
+        systemProperty "browser", System.getProperty("browser")
     }
 }
+=======
+            suites "src/test/resources/TestNG.xml"
+            suites "src/test/resources/SmokeSuite.xml"
+
+    }
+
+    }
+
+>>>>>>> Stashed changes

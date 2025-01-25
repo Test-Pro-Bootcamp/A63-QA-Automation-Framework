@@ -3,16 +3,16 @@ import org.testng.annotations.Test;
 import PageFactory.LoginPage;
 import PageFactory.HomePage;
 
-public class LoginTests extends BaseTest {
+public class HomePageTests extends BaseTest {
     @Test
-    public void loginValidEmailPassword() {
+    public void isRecentlyPlayedDisplayed() {
         LoginPage loginPage = new LoginPage(driver);
         HomePage homePage = new HomePage(driver);
 
         loginPage.provideEmail("victoria.mereneanu@testpro.io")
                 .providePassword("Testpro4321$")
                 .clickSubmit();
-        Assert.assertTrue(homePage.isAvatarDisplayed());
-
+        homePage.viewRecentlyPlayed();
+        Assert.assertTrue(homePage.isPlaylistDisplayed());
     }
 }

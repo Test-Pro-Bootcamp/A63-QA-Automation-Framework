@@ -3,8 +3,13 @@
 
 <suite name="SmokeSuite" parallel="methods" thread-count="2">
 
+<<<<<<< Updated upstream
     <test name="IntershipTest" preserve-order="false">
         <parameter name="BaseUrl" value="https://qa.koel.app/"/>
+=======
+    <test name="Intership Test" preserve-order="false">
+        <parameter name="BaseUrl" value="https://qa.koel.app/"></parameter>
+>>>>>>> Stashed changes
         <classes>
             <class name="LoginTests"/>
             <class name="BaseTest"/>

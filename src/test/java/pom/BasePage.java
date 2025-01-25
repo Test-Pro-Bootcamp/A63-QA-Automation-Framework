@@ -14,7 +14,7 @@ public class BasePage {
 
     public BasePage(WebDriver givenDriver) {
         driver = givenDriver;
-        wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         actions = new Actions(driver);
     }
 
@@ -25,5 +25,6 @@ public class BasePage {
     public void doubleClick(By locator) {
         actions.doubleClick(findElement(locator)).perform();
     }
-
+    public void mouseHover(By locator) { actions.moveToElement(findElement(locator)).perform();
+    }
 }

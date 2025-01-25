@@ -13,15 +13,26 @@ public class HomePage extends BasePage{
     WebElement popupNotification;
     @FindBy(css = "li[class='playlist recently-played']")
     WebElement recentlyPlayed;
+    @FindBy(css = "div[class='song-list-wrap main-scroll-wrap recently-played']")
+    WebElement recentlyPlayedSongs;
 
     public HomePage(WebDriver givendriver) {super(givendriver);}
     public HomePage doubleClickPaylist() {
         doubleClick(firstPlaylist);
         return this;
     }
-    public boolean isAvatarDisplayed(){
+    public boolean isAvatarDisplayed() {
         return avatarIcon.isDisplayed();
     }
+
+public HomePage viewRecentlyPlayed() {
+   recentlyPlayed.click();
+   return this;
+}
+
+public boolean isPlaylistDisplayed(){
+        return recentlyPlayedSongs.isDisplayed();
+}
 
 
 }

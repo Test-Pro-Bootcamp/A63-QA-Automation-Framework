@@ -16,7 +16,7 @@ public class LoginTests extends BaseTest {
 
 
 
-    @Test(description = "Check if user login with correct credentials", groups = "Smoke")
+    @Test(description = "Check if user login with correct credentials", priority = 1, groups = "Smoke")
     public void loginTest() {
         loginPage = new LoginPage(driver);
         loginPage.login("nazar@testpro.io", "Pomidor2115");
@@ -24,7 +24,7 @@ public class LoginTests extends BaseTest {
         Assert.assertTrue(homePage.getAvatar().isDisplayed()); //true
     }
 
-    @Test(groups = "Regression", dataProvider = "incorrectCredentials")
+    @Test(dataProvider = "incorrectCredentials", dataProviderClass = DataProviderCredentials.class)
     public void loginWithEmptyCredentials(String email, String password) {
         loginPage = new LoginPage(driver);
         loginPage.login(email, password);

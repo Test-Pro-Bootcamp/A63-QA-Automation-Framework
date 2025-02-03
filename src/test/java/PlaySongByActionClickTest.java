@@ -1,3 +1,4 @@
+import org.example.LoginPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebElement;
@@ -8,11 +9,15 @@ import org.testng.annotations.Test;
 
 public class PlaySongByActionClickTest extends BaseTest {
 
+    LoginPage loginPage = null;
+
+
     @Test
     public void playSongByContextClick() {
         String songLocator = "//article[@data-test='song-card']//span[contains(text(), '%s')]";
         String songName = "Way Of The Samurai";
-        login("nazar@testpro.io", "Pomidor2115");
+        loginPage = new LoginPage(driver);
+        loginPage.login("nazar@testpro.io", "Pomidor2115");
         WebElement allSongsMenuItem = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("[id='sidebar'] .songs")));
         actions.click(allSongsMenuItem).perform();
         WebElement song = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(String.format(songLocator, songName))));

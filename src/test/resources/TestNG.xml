@@ -12,8 +12,9 @@
             <class name="AddSongToPlaylistTest"/>
             <class name="PlaySongTest"/>
             <class name="DeletePlaylistTest"/>
-            <class name="BasePage"/>
+            <class name="BaseTest"/>
             <class name="RenamePlaylistTest"/>
+            <class name="ThemeTest"/>
 
 
         </classes>

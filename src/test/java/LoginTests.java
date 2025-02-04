@@ -24,10 +24,12 @@ public class LoginTests extends BaseTest {
 
 
 
-    @Test(groups = "Regression", dataProvider = "incorrectCredentials", dataProviderClass = DataProviderCredentials.class)
+    @Test(dataProvider = "incorrectCredentials", dataProviderClass = DataProviderCredentials.class)
     public void loginWithEmptyCredentials(String email, String password) {
         loginPage = new LoginPage(driver);
         loginPage.login(email, password);
         Assert.assertTrue(loginPage.getLogo().isDisplayed());
     }
+
+
 }

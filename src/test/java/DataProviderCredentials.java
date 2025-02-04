@@ -1,23 +1,8 @@
-import org.example.pages.HomePage;
-import org.example.pages.LoginPage;
-import org.testng.Assert;
 import org.testng.annotations.DataProvider;
-import org.testng.annotations.Test;
-
-
-public class DataProviderCredentials extends BaseTest {
-
-
-    LoginPage loginPage = null;
 
 
 
-    @Test(dataProvider = "incorrectCredentials")
-    public void loginWithEmptyCredentials(String email, String password) {
-        loginPage = new LoginPage(driver);
-        loginPage.login(email, password);
-        Assert.assertTrue(loginPage.getLogo().isDisplayed());
-    }
+public class DataProviderCredentials {
 
 
     @DataProvider(name = "incorrectCredentials")

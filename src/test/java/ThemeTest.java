@@ -1,6 +1,6 @@
-import org.example.HomePage;
-import org.example.LoginPage;
-import org.example.ProfilePage;
+import org.example.pages.HomePage;
+import org.example.pages.LoginPage;
+import org.example.pages.ProfilePage;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 

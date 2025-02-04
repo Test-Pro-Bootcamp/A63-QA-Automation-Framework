@@ -1,9 +1,6 @@
-import org.example.HomePage;
-import org.example.LoginPage;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
+import org.example.pages.HomePage;
+import org.example.pages.LoginPage;
 import org.testng.Assert;
-import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 
@@ -13,6 +10,7 @@ public class LoginTests extends BaseTest {
 
     LoginPage loginPage = null;
 
+    HomePage homePage = null;
 
 
 
@@ -20,11 +18,13 @@ public class LoginTests extends BaseTest {
     public void loginTest() {
         loginPage = new LoginPage(driver);
         loginPage.login("nazar@testpro.io", "Pomidor2115");
-        HomePage homePage = new HomePage(driver);
+        homePage = new HomePage(driver);
         Assert.assertTrue(homePage.getAvatar().isDisplayed()); //true
     }
 
-    @Test(dataProvider = "incorrectCredentials", dataProviderClass = DataProviderCredentials.class)
+
+
+    @Test(groups = "Regression", dataProvider = "incorrectCredentials", dataProviderClass = DataProviderCredentials.class)
     public void loginWithEmptyCredentials(String email, String password) {
         loginPage = new LoginPage(driver);
         loginPage.login(email, password);

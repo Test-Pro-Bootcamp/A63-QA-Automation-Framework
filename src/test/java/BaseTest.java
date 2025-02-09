@@ -72,7 +72,7 @@ public class BaseTest {
 
             case "grid":
                 DesiredCapabilities capabilities = new DesiredCapabilities();
-                capabilities.setCapability("browserName", "chrome");
+                capabilities.setCapability("browserName", "edge");
                 return driver = new RemoteWebDriver(URI.create(gridUrl).toURL(), capabilities);
 
             default:
